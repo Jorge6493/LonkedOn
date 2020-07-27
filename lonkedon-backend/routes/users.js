@@ -8,11 +8,12 @@ router.get('/', function(req, res, next) {
   res.send('respond with a GET for Pedro');
 });
 
-router.post("/create", function (req, res) {
+router.get("/create", function (req, res,next) {
 
 	var user = new User({
 		username: "Pedro",
-		password: "Pablo"
+		password: "Pablo",
+		type_of_user: "Administrator"
 	});
 
 	user.save().then(function (us) {
