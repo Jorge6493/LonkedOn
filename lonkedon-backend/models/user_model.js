@@ -8,8 +8,7 @@ var email_match = [];
 var user_schema = new Schema({
 	username: { type: String, required: true, maxlength: [50, "Username muy grande"] },
 	password: {
-		type: String,
-		minlength: [5, "El password es muy corto"]
+		type: String
 	}
 });
 
