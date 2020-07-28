@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import Search from '../search'
+// import Search from '../search'
 import Postjob from '../postjob'
 import Settings from '../settings'
 import Logout from '../logout'
 import Table from '../table'
+// import {Link, BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import './jobs.css'
 
 class Jobs extends Component {
+  
   render() {
+    // const { params: { jobsId } } = match;
+    // console.log(jobsId);
+    // console.log(this.props.match.params.jobId)
+
     return(
       <div class="container">
             <div class="row float-right mr-2">
@@ -19,7 +25,7 @@ class Jobs extends Component {
             <br/>
             <div class="row">
                 <div class="input-group col-sm-6 ml-3">
-                    <Search/>               
+                                  
                 </div> 
                 <div class="input-group col-sm-2 ml-auto">
                     <Postjob/>
@@ -27,7 +33,7 @@ class Jobs extends Component {
             </div>
             <br/>
             <div class="container">
-                <Table name=""/>
+                <Table jobId={this.props.match.params.jobId} size='10'/>
             </div>
             </div>
           

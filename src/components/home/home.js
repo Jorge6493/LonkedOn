@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Search from '../search'
+// import Search from '../search'
 import Postjob from '../postjob'
 import Settings from '../settings'
 import Logout from '../logout'
@@ -19,7 +19,7 @@ class Home extends Component {
             <br/>
             <div class="row">
                 <div class="input-group col-sm-6 ml-3">
-                    <Search/>               
+                                   
                 </div> 
                 <div class="input-group col-sm-2 ml-auto">
                     <Postjob/>
@@ -27,15 +27,15 @@ class Home extends Component {
             </div>
             <br/>
             <div class="container">
-                <Table name="Design"/>
+                <Table jobId="1" size="5"/>
             </div>
             <br/>
             <div class="container">
-                <Table name="Programming"/>
+                <Table jobId="2" size="5"/>
             </div>
             <br/>
             <div class="container">
-                <Table name="QA Engineer"/>
+                <Table jobId="3" size="5"/>
             </div>
             </div>
           
