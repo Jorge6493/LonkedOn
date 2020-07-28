@@ -15,6 +15,6 @@ var job_schema = new Schema({
 	email: { type: String, required: true }
 });
 
-var Job = mongoose.model("Job", user_schema)
+var Job = mongoose.model("Job", job_schema)
 
 module.exports.Job = Job;

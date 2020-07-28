@@ -1,27 +1,37 @@
 var express = require('express');
 var router = express.Router();
 
-var User = require("../models/user_model").User;
+var Job = require("../models/job_model").Job;
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a GET for Pedro');
+// GET ALL JOBS
+router.get('/', function (req, res, next) {
+	Job.find().exec(function (err, jobs) {
+		if (err)
+			console.log(err);
+		res.send(jobs);
+	});
 });
 
-router.post("/create", function (req, res,next) {
+router.post("/", function (req, res,next) {
 
-	var user = new User({
-		username: req.username,
-		password: req.password,
-		type_of_user: req.type_of_user
+	var job = new Job({
+		location: "Santo Domingo",
+		position: "Software Developer",
+		company: "Pedro Guillermo & Asoc",
+		type_of_job: "Type",
+		category: "Software",
+		logo: null,
+		url: null,
+		description: "Great Job!",
+		email: "me@me.com"
 	});
 
-	user.save().then(function (us) {
+	job.save().then(function (us) {
 		res.send("Guardamos tus datos");
 	}, function (err) {
 		if (err) {
 			console.log(String(err));
-			res.send("No se guardo el usuario")
+			res.send("No se guardo el trabajo")
 		}
 	});
 });
