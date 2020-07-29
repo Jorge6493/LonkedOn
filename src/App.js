@@ -9,7 +9,9 @@ import Jobs from './components/jobs/jobs';
 
 import PostJobForm from './components/postjobform/postjobform';
 import JobDetail from './components/jobdetail/jobdetail';
-import Login from './components/login/login'
+//import Login from './components/createuser/login'
+import SettingsView from './components/settingsview/settingsview';
+import CreateUser from './components/createuser/createuser';
 
 
 function App() {
@@ -20,10 +22,10 @@ function App() {
             <Switch>
              <Route path="/" component={Home} exact/>
              <Route path="/jobs/:jobId" component={Jobs} exact/>
-             {/* <Route path="/postjob" component={PostjobPage}/> */}
              <Route path="/postjob" component={PostJobForm} exact/>
              <Route path="/jobdetail" component={JobDetail} exact/>
-             <Route path="/login" component={Login} exact/>
+             <Route path="/createuser" component={CreateUser} exact/>
+             <Route path="/settings" component={SettingsView} exact/>
              {/* <Route path="/contact" component={Contact}/> */}
             <Route component={Error}/>
            </Switch>
