@@ -4,18 +4,37 @@ import Logout from "../logout";
 import Settings from "../settings";
 import Postjob from "../postjob/postjob";
 import HomeButton from "../homebutton/homebutton";
+import axios from "axios";
 
 export default class PostJobForm extends React.Component {
-    state = {
-        category: "Designer",
-        tipo: "",
-        compania: "",
-        logo: null,
-        email: "",
-        url: "",
-        position: "",
-        location: "",
-        desc: ""
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            category: "",
+            tipo: "",
+            compania: "",
+            logo: null,
+            email: "",
+            url: "",
+            position: "",
+            location: "",
+            desc: ""
+        }
+    }
+
+    postContent() {
+        axios.post("http://localhost:3500/jobs", {
+            location: this.state.location,
+            position: this.state.position,
+            company: this.state.compania,
+            type_of_job: this.state.tipo,
+            category: this.state.category,
+            logo: null,
+            url: this.state.url,
+            description: this.state.desc,
+            email: this.state.email   
+        })
     }
     
     handleChange = (event, fieldName) => {
@@ -29,32 +48,6 @@ export default class PostJobForm extends React.Component {
             });
         }
     };
-
-    async func(){
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                category: "Designer",
-        tipo: "",
-        compania: "",
-        logo: null,
-        email: "",
-        url: "",
-        position: "",
-        location: "",
-        desc: ""
-            })
-        };
-          console.log('hola')
-    const url = "http://localhost:3500/jobs";
-    const response = await fetch(url,requestOptions);
-    const data = await response.json();
-    // this.setState({data: data, loading: false});
-    // console.log(this.state.data);
-    // console.log(response)
-    // console.log(data[0].category)
-    }
 
     handleSubmit = event =>{
         console.log('thisstate');
@@ -134,7 +127,7 @@ export default class PostJobForm extends React.Component {
                     <label for="desc">Description</label><tab></tab>
                     <textarea id="desc" class="form-control" placeholder="Enter job description" rows="4" value={this.state.desc} onChange={event => this.handleChange(event, "desc")}></textarea>
                 </div>
-                <button onClick={this.func}>Submit</button>
+                <button onClick={this.postContent.bind(this)}>Submit</button>
             </div>    
         );
     }
