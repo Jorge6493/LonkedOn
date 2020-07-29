@@ -9,7 +9,7 @@ import Jobs from './components/jobs/jobs';
 
 import PostJobForm from './components/postjobform/postjobform';
 import JobDetail from './components/jobdetail/jobdetail';
-//import SettingsView from './components/settingsview/settingsview';
+import SettingsView from './components/settingsview/settingsview';
 import CreateUser from './components/createuser/createuser';
 import Login from './components/login/login';
 
@@ -25,7 +25,7 @@ function App() {
              <Route path="/postjob" component={PostJobForm} exact/>
              <Route path="/jobdetail" component={JobDetail} exact/>
              <Route path="/createuser" component={CreateUser} exact/>
-             {/*<Route path="/settings" component={SettingsView} exact/>*/}
+             <Route path="/settings" component={SettingsView} exact/>
              <Route path="/login" component={Login} exact/>
              {/* <Route path="/contact" component={Contact}/> */}
             <Route component={Error}/>

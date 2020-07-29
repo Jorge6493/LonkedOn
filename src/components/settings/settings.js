@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import './settings.css'
+import { Link } from 'react-router-dom';
 
 class Settings extends Component {
   render() {
     return (
       <div>
-        <span class="gear">
-          <i class="fa fa-cog"></i>
-        </span>
+        <Link to="/settings">
+          <span class="gear">
+            <i class="fa fa-cog"></i>
+          </span>
+        </Link>
+        
       </div>
     );
   }
