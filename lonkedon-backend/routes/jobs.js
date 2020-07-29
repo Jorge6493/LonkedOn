@@ -20,6 +20,14 @@ router.get('/:id', function (req, res, next) {
 	});
 });
 
+router.get('/categoty:id', function (req, res, next) {
+	Job.find({ category: 'Design' }).exec(function (err, jobs) {
+		if (err)
+			console.log(err);
+		res.send(jobs);
+	});
+})
+
 router.delete('/:id', function (req, res, next) {
 	Job.findByIdAndDelete(req.params.id).exec(function (err, jobs) {
 		if (err)
@@ -39,6 +47,7 @@ router.post("/", function (req, res,next) {
 		logo: req.body.logo,
 		url: req.body.url,
 		description: req.body.description,
+		como_aplicar: req.body.como_aplicar,
 		email: req.body.email
 	});
 
@@ -47,7 +56,7 @@ router.post("/", function (req, res,next) {
 	}, function (err) {
 		if (err) {
 			console.log(String(err));
-			res.send("No se guardo el trabajo")
+			res.send(req.body)
 		}
 	});
 });
