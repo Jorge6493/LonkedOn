@@ -9,6 +9,7 @@ import Jobs from './components/jobs/jobs';
 
 import PostJobForm from './components/postjobform/postjobform';
 import JobDetail from './components/jobdetail/jobdetail';
+import Login from './components/login/login'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
              {/* <Route path="/postjob" component={PostjobPage}/> */}
              <Route path="/postjob" component={PostJobForm} exact/>
              <Route path="/jobdetail" component={JobDetail} exact/>
+             <Route path="/login" component={Login} exact/>
              {/* <Route path="/contact" component={Contact}/> */}
             <Route component={Error}/>
            </Switch>
