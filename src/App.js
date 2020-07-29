@@ -6,6 +6,7 @@ import './App.css';
 import Home from './components/home'
 import Jobs from './components/jobs/jobs';
 import PostJobForm from './components/postjobform/postjobform';
+import JobDetail from './components/jobdetail/jobdetail';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
              <Route path="/" component={Home} exact/>
              <Route path="/jobs/:jobId" component={Jobs} exact/>
              <Route path="/postjob" component={PostJobForm} exact/>
+             <Route path="/jobdetail" component={JobDetail} exact/>
              {/* <Route path="/contact" component={Contact}/> */}
             <Route component={Error}/>
            </Switch>
