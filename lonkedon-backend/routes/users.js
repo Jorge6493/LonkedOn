@@ -14,10 +14,15 @@ router.get('/', function (req, res, next) {
 
 // Post
 router.post("/login", function (req, res, next) {
-	User.findOne({ email: req.body.email, password: req.body.password }, function (err, user) {
+	User.findOne({ username: req.body.username, password: req.body.password }, function (err, user) {
 		if (err)
 			console.log(err);
-		res.send("OK");
+		try {
+			res.send(user._id);
+		}
+		catch{
+			res.send();
+        }		
 	});
 });
 
