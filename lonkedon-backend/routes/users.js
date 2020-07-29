@@ -12,6 +12,14 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+router.get('/:id', function (req, res, next) {
+	User.findById(req.params.id).exec(function (err, usuarios) {
+		if (err)
+			console.log(err);
+		res.send(usuarios);
+	});
+});
+
 // POST USER
 router.post("/", function (req, res,next) {
 
