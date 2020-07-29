@@ -5,41 +5,30 @@ var User = require("../models/user_model").User;
 
 // Get All
 router.get('/', function (req, res, next) {
-	User.find().exec(function (err, usuarios) {
+	Category.find().exec(function (err, categorias) {
 		if (err)
 			console.log(err);
-		res.send(usuarios);
-	});
-});
-
-// Post
-router.post("/login", function (req, res, next) {
-	User.findOne({ email: req.body.email, password: req.body.password }, function (err, user) {
-		if (err)
-			console.log(err);
-		res.send("OK");
+		res.send(categorias);
 	});
 });
 
 // Get ID
 router.get('/:id', function (req, res, next) {
-	User.findById(req.params.id).exec(function (err, usuarios) {
+	Category.findById(req.params.id).exec(function (err, categorias) {
 		if (err)
 			console.log(err);
-		res.send(usuarios);
+		res.send(categorias);
 	});
 });
 
 // Post
 router.post("/", function (req, res,next) {
 
-	var user = new User({
-		username: req.body.username,
-		password: req.body.password,
-		type_of_user: req.body.type_of_user
+	var category = new Category({
+		name: req.body.category
 	});
 
-	user.save().then(function (us) {
+	category.save().then(function (us) {
 		res.send("Guardamos tus datos");
 	}, function (err) {
 		if (err) {
@@ -51,10 +40,10 @@ router.post("/", function (req, res,next) {
 
 // Delete
 router.delete('/:id', function (req, res, next) {
-	User.findByIdAndDelete(req.params.id).exec(function (err, users) {
+	Category.findByIdAndDelete(req.params.id).exec(function (err, category) {
 		if (err)
 			console.log(err);
-		res.send(users);
+		res.send(category);
 	});
 });
 
