@@ -4,6 +4,7 @@ import Settings from "../settings";
 import Postjob from "../postjob/postjob";
 import HomeButton from "../homebutton/homebutton";
 import axios from "axios";
+import { withRouter } from 'react-router-dom';
 
 export default class Login extends React.Component {
 
@@ -11,7 +12,8 @@ export default class Login extends React.Component {
         super(props)
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            valid: false
         }
         this.user_id = "";
     }
@@ -21,17 +23,19 @@ export default class Login extends React.Component {
             username: this.state.username,
             password: this.state.password
         }).then((response) => {
-            if (response.data == "")
-                alert("Incorrect Username or Password");
+            if (response.data === "") {
+                alert("Incorrect Username or Password");                
+            }
+
             else {
                 this.user_id = response.data;
-                alert("Logged in!")
+                this.props.history.push('/');
             }
+            this.setState({
+                username: "",
+                password: "",
+            })
         })
-        this.setState({
-            username: "",
-            password: ""
-        });
     }
     
     handleChange = (event, fieldName) => {
