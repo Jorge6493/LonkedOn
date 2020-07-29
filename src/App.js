@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Home from './components/home'
 import Jobs from './components/jobs/jobs';
+import PostjobPage from './components/postjob-page/postjob-page';
 
 
 
@@ -16,7 +17,7 @@ function App() {
             <Switch>
              <Route path="/" component={Home} exact/>
              <Route path="/jobs/:jobId" component={Jobs} exact/>
-             {/* <Route path="/contact" component={Contact}/> */}
+             <Route path="/postjob" component={PostjobPage}/>
             <Route component={Error}/>
            </Switch>
         </div> 
