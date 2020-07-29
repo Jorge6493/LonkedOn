@@ -19,8 +19,10 @@ const jobs = [
   },
 ];
 
-class Table extends Component {
 
+
+class Table extends Component {
+  
 
   state = {
     loading: true,
@@ -59,6 +61,15 @@ class Table extends Component {
         ]}
 
         data={this.state.data}
+        actions={[
+          {
+            icon: 'save',
+            tooltip: 'Save User',
+            onClick: (event, rowData) => {
+              let id = rowData._id
+              window.location = "/jobs/"+id}
+          }
+        ]}
 
         title=''
         components={{
