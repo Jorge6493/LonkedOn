@@ -67,7 +67,7 @@ class Table extends Component {
             tooltip: 'Save User',
             onClick: (event, rowData) => {
               let id = rowData._id
-              window.location = "/jobs/"+id}
+              window.location = "/jobdetail/"+id}
           }
         ]}
 

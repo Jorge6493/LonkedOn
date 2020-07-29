@@ -23,7 +23,7 @@ function App() {
              <Route path="/" component={Home} exact/>
              <Route path="/jobs/:jobId" component={Jobs} exact/>
              <Route path="/postjob" component={PostJobForm} exact/>
-             <Route path="/jobdetail" component={JobDetail} exact/>
+             <Route path="/jobdetail/:jobId" component={JobDetail} exact/>
              <Route path="/createuser" component={CreateUser} exact/>
              <Route path="/settings" component={SettingsView} exact/>
              <Route path="/login" component={Login} exact/>
