@@ -13,16 +13,25 @@ export default class Login extends React.Component {
             username: "",
             password: ""
         }
+        this.user_id = "";
     }
 
     postContent() {
-        axios.post("http://localhost:3500/users", {
+        axios.post("http://localhost:3500/users/login", {
             username: this.state.username,
             password: this.state.password
-        }).then(this.setState({
+        }).then((response) => {
+            if (response.data == "")
+                alert("Incorrect Username or Password");
+            else {
+                this.user_id = response.data;
+                alert("Logged in!")
+            }
+        })
+        this.setState({
             username: "",
             password: ""
-        }))
+        });
     }
     
     handleChange = (event, fieldName) => {
@@ -45,14 +54,16 @@ export default class Login extends React.Component {
                         <Postjob />
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" placeholder="Enter username" id="username" value={this.state.username} onChange={event => this.handleChange(event, "username")}/>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password"  class="form-control"placeholder="Enter password" id="password" value={this.state.password} onChange={event => this.handleChange(event, "password")}/>
-                </div>
+                <div class="col-md-6 center">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" placeholder="Enter username" id="username" value={this.state.username} onChange={event => this.handleChange(event, "username")} />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" placeholder="Enter password" id="password" value={this.state.password} onChange={event => this.handleChange(event, "password")} />
+                    </div>
+                </div>                
                 <button onClick={this.postContent.bind(this)}>Submit</button>
             </div>    
         );
