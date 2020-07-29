@@ -66,6 +66,7 @@ export default class PostJobForm extends React.Component {
                         <Postjob />
                     </div>
                 </div>
+                <div class="col-md-6">
                 <div class="form-group">
                     <label for="categoria">Category</label>
                     <select for="categoria" class="form-control" id="categoria" value={this.state.category} onChange={event => this.handleChange(event, "category")}>
@@ -87,7 +88,7 @@ export default class PostJobForm extends React.Component {
                 </div>
                 <div class="form-group">
                     <label for="compania">Company</label><tab></tab>
-                    <input type="text" class="form-control"placeholder="Enter company name" id="compania" value={this.state.compania} onChange={event => this.handleChange(event, "compania")}/>
+                    <input type="text" class="form-control" placeholder="Enter company name" id="compania" value={this.state.compania} onChange={event => this.handleChange(event, "compania")}/>
                 </div>
                 <div class="form-group">
                     <label for="logo">Logo</label>
@@ -112,6 +113,7 @@ export default class PostJobForm extends React.Component {
                 <div class="form-group">
                     <label for="desc">Description</label><tab></tab>
                     <textarea id="desc" class="form-control" placeholder="Enter job description" rows="4" value={this.state.desc} onChange={event => this.handleChange(event, "desc")}></textarea>
+                    </div>
                 </div>
                 <button onClick={this.postContent.bind(this)}>Submit</button>
             </div>    

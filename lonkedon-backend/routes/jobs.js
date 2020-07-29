@@ -48,7 +48,8 @@ router.post("/", function (req, res,next) {
 		url: req.body.url,
 		description: req.body.description,
 		como_aplicar: req.body.como_aplicar,
-		email: req.body.email
+		email: req.body.email,
+		publication_date: req.body.publication_date
 	});
 
 	job.save().then(function (us) {

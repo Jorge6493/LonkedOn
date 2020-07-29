@@ -13,7 +13,8 @@ var job_schema = new Schema({
 	url: { type: String },
 	description: { type: String, required: true },
 	como_aplicar: { type: String },
-	email: { type: String, required: true }
+	email: { type: String, required: true },
+	publication_date: { type: Date, required: true }
 });
 
 var Job = mongoose.model("Job", job_schema)
