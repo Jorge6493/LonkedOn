@@ -23,15 +23,15 @@ router.get('/:id', function (req, res, next) {
 router.post("/", function (req, res,next) {
 
 	var job = new Job({
-		location: "Santo Domingo",
-		position: "Software Developer",
-		company: "Pedro Guillermo & Asoc",
-		type_of_job: "Type",
-		category: "Software",
-		logo: null,
-		url: null,
-		description: "Great Job!",
-		email: "me@me.com"
+		location: req.body.location,
+		position: req.body.position,
+		company: req.body.company,
+		type_of_job: req.body.type_of_job,
+		category: req.body.category,
+		logo: req.body.logo,
+		url: req.body.url,
+		description: req.body.description,
+		email: req.body.email
 	});
 
 	job.save().then(function (us) {

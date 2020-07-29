@@ -24,9 +24,9 @@ router.get('/:id', function (req, res, next) {
 router.post("/", function (req, res,next) {
 
 	var user = new User({
-		username: req.username,
-		password: req.password,
-		type_of_user: req.type_of_user
+		username: req.body.username,
+		password: req.body.password,
+		type_of_user: req.body.type_of_user
 	});
 
 	user.save().then(function (us) {
