@@ -3,7 +3,7 @@ var router = express.Router();
 
 var Job = require("../models/job_model").Job;
 
-// GET ALL JOBS
+// Get All
 router.get('/', function (req, res, next) {
 	Job.find().exec(function (err, jobs) {
 		if (err)
@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+// Get ID
 router.get('/:id', function (req, res, next) {
 	Job.findById(req.params.id).exec(function (err, jobs) {
 		if (err)
@@ -20,6 +21,7 @@ router.get('/:id', function (req, res, next) {
 	});
 });
 
+// Get by Category
 router.get('/categoty:id', function (req, res, next) {
 	Job.find({ category: 'Design' }).exec(function (err, jobs) {
 		if (err)
@@ -28,6 +30,7 @@ router.get('/categoty:id', function (req, res, next) {
 	});
 })
 
+// Delete
 router.delete('/:id', function (req, res, next) {
 	Job.findByIdAndDelete(req.params.id).exec(function (err, jobs) {
 		if (err)
@@ -36,6 +39,7 @@ router.delete('/:id', function (req, res, next) {
 	});
 });
 
+// Post
 router.post("/", function (req, res,next) {
 
 	var job = new Job({

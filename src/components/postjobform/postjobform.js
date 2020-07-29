@@ -87,7 +87,7 @@ export default class PostJobForm extends React.Component {
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="compania">Company</label><tab></tab>
+                    <label for="compania">Company</label>
                     <input type="text" class="form-control" placeholder="Enter company name" id="compania" value={this.state.compania} onChange={event => this.handleChange(event, "compania")}/>
                 </div>
                 <div class="form-group">
@@ -95,23 +95,23 @@ export default class PostJobForm extends React.Component {
                     <input type="file" class="form-control" id="logo" onChange={this.handleLogo}/>
                 </div>
                 <div class="form-group">
-                    <label for="email">Contact Email</label><tab></tab>
+                    <label for="email">Contact Email</label>
                     <input type="text"  class="form-control"placeholder="Enter contact email address" id="email" value={this.state.email} onChange={event => this.handleChange(event, "email")}/>
                 </div>
                 <div class="form-group">
-                    <label for="url">URL</label><tab></tab>
+                    <label for="url">URL</label>
                     <input type="text"  class="form-control"placeholder="Enter company webpage" id="url" value={this.state.url} onChange={event => this.handleChange(event, "url")}/>
                 </div>
                 <div class="form-group">
-                    <label for="position">Position</label><tab></tab>
+                    <label for="position">Position</label>
                     <input type="text" class="form-control"placeholder="Enter available position" id="position" value={this.state.position} onChange={event => this.handleChange(event, "position")}/>
                 </div>
                 <div class="form-group">
-                    <label for="location">Location</label><tab></tab>
+                    <label for="location">Location</label>
                     <input type="text" class="form-control" placeholder="Enter company location" id="location" value={this.state.location} onChange={event => this.handleChange(event, "location")}/>
                 </div>
                 <div class="form-group">
-                    <label for="desc">Description</label><tab></tab>
+                    <label for="desc">Description</label>
                     <textarea id="desc" class="form-control" placeholder="Enter job description" rows="4" value={this.state.desc} onChange={event => this.handleChange(event, "desc")}></textarea>
                     </div>
                 </div>

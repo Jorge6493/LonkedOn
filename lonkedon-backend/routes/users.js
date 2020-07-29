@@ -3,7 +3,7 @@ var router = express.Router();
 
 var User = require("../models/user_model").User;
 
-// GET ALL USERS
+// Get All
 router.get('/', function (req, res, next) {
 	User.find().exec(function (err, usuarios) {
 		if (err)
@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+// Get ID
 router.get('/:id', function (req, res, next) {
 	User.findById(req.params.id).exec(function (err, usuarios) {
 		if (err)
@@ -20,7 +21,7 @@ router.get('/:id', function (req, res, next) {
 	});
 });
 
-// POST USER
+// Post
 router.post("/", function (req, res,next) {
 
 	var user = new User({
@@ -36,6 +37,15 @@ router.post("/", function (req, res,next) {
 			console.log(String(err));
 			res.send("No se guardo el usuario")
 		}
+	});
+});
+
+// Delete
+router.delete('/:id', function (req, res, next) {
+	User.findByIdAndDelete(req.params.id).exec(function (err, users) {
+		if (err)
+			console.log(err);
+		res.send(users);
 	});
 });
 
