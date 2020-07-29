@@ -78,8 +78,12 @@ export default class PostJobForm extends React.Component {
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="tipo">Type</label><tab></tab>
-                    <input type="text" class="form-control" placeholder="i.e.:        full-time, part-time, etc." id="tipo" value={this.state.tipo} onChange={event => this.handleChange(event, "tipo")}/>
+                    <label for="tipo">Type</label>
+                    <select for="categoria" class="form-control" id="tipo" value={this.state.tipo} onChange={event => this.handleChange(event, "tipo")}>
+                        <option value="fulltime">Full Time</option>
+                        <option value="parttime">Part Time</option>
+                        <option value="freelancer">Freelancer</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="compania">Company</label><tab></tab>
