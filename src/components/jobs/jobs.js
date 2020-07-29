@@ -6,9 +6,9 @@ import Logout from '../logout'
 import Table from '../table'
 // import {Link, BrowserRouter, Route, Switch} from 'react-router-dom';
 
-import './header.css'
+import './jobs.css'
 
-class Header extends Component {
+class Jobs extends Component {
 
   render() {
     // const { params: { jobsId } } = match;
@@ -28,9 +28,7 @@ class Header extends Component {
 
           </div>
           <div class="input-group col-sm-2 ml-auto">
-            <div id="Postjob">
-              <button type="button" id="postjob-btn" class="btn btn-primary">Post a Job</button>
-            </div>
+            <Postjob />
           </div>
         </div>
         <br />
@@ -43,4 +41,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Jobs;
