@@ -12,6 +12,14 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+router.get('/:id', function (req, res, next) {
+	Job.findById(req.params.id).exec(function (err, jobs) {
+		if (err)
+			console.log(err);
+		res.send(jobs);
+	});
+});
+
 router.post("/", function (req, res,next) {
 
 	var job = new Job({
