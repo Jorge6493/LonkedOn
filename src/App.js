@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Home from './components/home'
 import Jobs from './components/jobs/jobs';
-
+import PostJobForm from './components/postjobform/postjobform';
 
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
             <Switch>
              <Route path="/" component={Home} exact/>
              <Route path="/jobs/:jobId" component={Jobs} exact/>
+             <Route path="/postjob" component={PostJobForm} exact/>
              {/* <Route path="/contact" component={Contact}/> */}
             <Route component={Error}/>
            </Switch>
