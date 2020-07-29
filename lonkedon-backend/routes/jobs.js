@@ -53,7 +53,7 @@ router.post("/", function (req, res,next) {
 		description: req.body.description,
 		como_aplicar: req.body.como_aplicar,
 		email: req.body.email,
-		publication_date: req.body.publication_date
+		publication_date: Date.now()
 	});
 
 	job.save().then(function (us) {
