@@ -5,7 +5,7 @@ var Job = require("../models/job_model").Job;
 
 // Get All
 router.get('/', function (req, res, next) {
-	Job.find().exec(function (err, jobs) {
+	Job.find().sort({ publication_date: 'descending' }).exec(function (err, jobs) {
 		if (err)
 			console.log(err);
 		res.send(jobs);
