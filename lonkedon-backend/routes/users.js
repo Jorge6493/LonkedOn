@@ -12,13 +12,21 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+router.get('/:id', function (req, res, next) {
+	User.findById(req.params.id).exec(function (err, usuarios) {
+		if (err)
+			console.log(err);
+		res.send(usuarios);
+	});
+});
+
 // POST USER
 router.post("/", function (req, res,next) {
 
 	var user = new User({
-		username: req.username,
-		password: req.password,
-		type_of_user: req.type_of_user
+		username: req.body.username,
+		password: req.body.password,
+		type_of_user: req.body.type_of_user
 	});
 
 	user.save().then(function (us) {
