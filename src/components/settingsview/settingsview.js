@@ -23,8 +23,7 @@ export default class SettingsView extends React.Component {
                 <br/>
                 <Link to="/editjobs">
                     <h3 class="col-sm-6">Edit Job Postings</h3>
-                </Link>
-                
+                </Link>                
             </div>
         );
     }
