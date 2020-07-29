@@ -4,7 +4,6 @@ import './table.css';
 // import Search from '../search';
 // import Jobs from '../jobs/jobs';
 import { Link } from 'react-router-dom';
-import { data } from 'jquery';
 // import { MTableToolbar } from 'material-table';
 
 const jobs = [
@@ -44,7 +43,7 @@ class Table extends Component {
     return (
       <div style={{ maxWidth: '100%' }}>
         <MaterialTable
-        options={{pageSize:this.props.size}}
+        options={{pageSize: parseInt(this.props.size) }}
           columns={[
             { title: 'Location', field: 'location' },
             { title: 'Position', field: 'position' },
@@ -63,7 +62,7 @@ class Table extends Component {
                     {
                     data: result,
                     page: 1,
-                    totalCount: result.total
+                    totalCount: parseInt(result.total) 
                   },
                   console.log(result)
                   )

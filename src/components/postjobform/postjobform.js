@@ -30,6 +30,50 @@ export default class PostJobForm extends React.Component {
         }
     };
 
+    async func(){
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                category: "Designer",
+        tipo: "",
+        compania: "",
+        logo: null,
+        email: "",
+        url: "",
+        position: "",
+        location: "",
+        desc: ""
+            })
+        };
+          console.log('hola')
+    const url = "http://localhost:3500/jobs";
+    const response = await fetch(url,requestOptions);
+    const data = await response.json();
+    // this.setState({data: data, loading: false});
+    // console.log(this.state.data);
+    // console.log(response)
+    // console.log(data[0].category)
+    }
+
+    handleSubmit = event =>{
+        console.log('thisstate');
+        console.log(this.state)
+        // const result = await fetch("localhost:3500/jobs",{method:'POST', body:this.state, headers: { 'Content-Type': 'application/json' }})
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: this.state
+        };
+        fetch('localhost:3500/jobs', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ 
+                compania: data.compania,
+
+             },
+             console.log(data)));
+    }
+
     render() {
         return (
             <div class="container">    
@@ -90,7 +134,7 @@ export default class PostJobForm extends React.Component {
                     <label for="desc">Description</label><tab></tab>
                     <textarea id="desc" class="form-control" placeholder="Enter job description" rows="4" value={this.state.desc} onChange={event => this.handleChange(event, "desc")}></textarea>
                 </div>
-                <button onClick={this.handleSubmit}>Submit</button>
+                <button onClick={this.func}>Submit</button>
             </div>    
         );
     }

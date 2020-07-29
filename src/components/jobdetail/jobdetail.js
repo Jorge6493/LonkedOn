@@ -5,7 +5,7 @@ import Settings from "../settings";
 import Postjob from "../postjob";
 import HomeButton from "../homebutton/homebutton";
 
-export default class JobDetail extends React.Component {
+export default class JobDetail extends Component {
     render() {
         return (
             <div class="container">
@@ -38,7 +38,7 @@ export default class JobDetail extends React.Component {
                     <p>Send your resume at pucmm@tigredeweb.com.do</p>
                 </div>
                 <div class="col-sm-3">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/710JXdscVsL._SY500_.jpg"></img>
+                    <img alt='hola' src="https://images-na.ssl-images-amazon.com/images/I/710JXdscVsL._SY500_.jpg"></img>
                 </div>
                 </div>
             </div>            

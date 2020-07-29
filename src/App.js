@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Home from './components/home'
 import Jobs from './components/jobs/jobs';
-import PostjobPage from './components/postjob-page/postjob-page';
+// import PostjobPage from './components/postjob-page/postjob-page';
 
 import PostJobForm from './components/postjobform/postjobform';
 import JobDetail from './components/jobdetail/jobdetail';
