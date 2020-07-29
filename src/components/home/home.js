@@ -24,15 +24,15 @@ class Home extends Component {
             </div>
             <br/>
             <div class="container">
-                <Table jobId="1" size="5"/>
+                <Table jobId="1" size="10"/>
             </div>
             <br/>
             <div class="container">
-                <Table jobId="2" size="5"/>
+                <Table jobId="2" size="10"/>
             </div>
             <br/>
             <div class="container">
-                <Table jobId="3" size="5"/>
+                <Table jobId="3" size="10"/>
             </div>
             </div>
           
