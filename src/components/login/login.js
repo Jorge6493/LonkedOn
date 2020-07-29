@@ -15,6 +15,7 @@ export default class Login extends React.Component {
             password: "",
             valid: false
         }
+        this.user_id = "";
     }
 
     postContent() {
