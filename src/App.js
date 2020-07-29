@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
 import Home from './components/home'
-import Jobs from './components/jobs/jobs';
+import Header from './components/header/header';
 
 
 
@@ -15,7 +15,7 @@ function App() {
           {/* <Navigation /> */}
             <Switch>
              <Route path="/" component={Home} exact/>
-             <Route path="/jobs/:jobId" component={Jobs} exact/>
+             <Route path="/header/:jobId" component={Header} exact/>
              {/* <Route path="/contact" component={Contact}/> */}
             <Route component={Error}/>
            </Switch>
