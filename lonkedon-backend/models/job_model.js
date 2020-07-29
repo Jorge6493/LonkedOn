@@ -12,6 +12,7 @@ var job_schema = new Schema({
 	logo: { type: String },
 	url: { type: String },
 	description: { type: String, required: true },
+	como_aplicar: { type: String },
 	email: { type: String, required: true }
 });
 
