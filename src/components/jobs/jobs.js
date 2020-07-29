@@ -34,7 +34,7 @@ class Jobs extends Component {
         </div>
         <br />
         <div class="container">
-          <Table jobId={this.props.match.params.jobId} size='10' />
+          <Table jobId={this.props.match.params.jobId} size='20' />
         </div>
       </div>
     );
