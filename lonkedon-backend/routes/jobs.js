@@ -12,6 +12,15 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+// Get by Category
+router.get('/category/:name', function (req, res, next) {
+	Job.find({ category: req.params.name }).exec(function (err, jobs) {
+		if (err)
+			console.log(err);
+		res.send(jobs);
+	});
+})
+
 // Get ID
 router.get('/:id', function (req, res, next) {
 	Job.findById(req.params.id).exec(function (err, jobs) {
@@ -21,14 +30,7 @@ router.get('/:id', function (req, res, next) {
 	});
 });
 
-// Get by Category
-router.get('/categoty:id', function (req, res, next) {
-	Job.find({ category: 'Design' }).exec(function (err, jobs) {
-		if (err)
-			console.log(err);
-		res.send(jobs);
-	});
-})
+
 
 // Delete
 router.delete('/:id', function (req, res, next) {
