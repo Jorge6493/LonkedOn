@@ -13,21 +13,15 @@ export default class Login extends React.Component {
         this.state = {
             user: "",
             password: "",
-            type_of_user: ""
+            type_of_user: "user"
         }
     }
 
     postContent() {
-        axios.post("http://localhost:3500/jobs", {
-            location: this.state.location,
-            position: this.state.position,
-            company: this.state.compania,
-            type_of_job: this.state.tipo,
-            category: this.state.category,
-            logo: null,
-            url: this.state.url,
-            description: this.state.desc,
-            email: this.state.email   
+        axios.post("http://localhost:3500/users", {
+            username: this.state.username,
+            password: this.state.password,
+            type_of_user: this.state.type_of_user
         })
     }
     
@@ -54,12 +48,12 @@ export default class Login extends React.Component {
                 </div>
                 <div class="col-md-6">
                 <div class="form-group">
-                    <label for="user">Username</label>
-                    <input type="text" class="form-control" placeholder="Enter username" id="user" value={this.state.user} onChange={event => this.handleChange(event, "user")}/>
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" placeholder="Enter username" id="username" value={this.state.username} onChange={event => this.handleChange(event, "username")}/>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password"  class="form-control"placeholder="Enter password" id="url" value={this.state.password} onChange={event => this.handleChange(event, "password")}/>
+                    <input type="password"  class="form-control"placeholder="Enter password" id="password" value={this.state.password} onChange={event => this.handleChange(event, "password")}/>
                 </div>
                 <div class="form-group">
                     <label for="type_of_user">Type of User</label>
