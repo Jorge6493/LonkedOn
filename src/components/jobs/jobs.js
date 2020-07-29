@@ -7,6 +7,7 @@ import Table from '../table'
 // import {Link, BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import './jobs.css'
+import HomeButton from '../homebutton/homebutton';
 
 class Jobs extends Component {
 
@@ -25,7 +26,7 @@ class Jobs extends Component {
         <br />
         <div class="row">
           <div class="input-group col-sm-6 ml-3">
-
+            <HomeButton />
           </div>
           <div class="input-group col-sm-2 ml-auto">
             <Postjob />
@@ -36,7 +37,6 @@ class Jobs extends Component {
           <Table jobId={this.props.match.params.jobId} size='10' />
         </div>
       </div>
-
     );
   }
 }

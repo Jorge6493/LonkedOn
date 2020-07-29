@@ -1,7 +1,11 @@
 import React from "react";
-import './casoDeUso5.component.css';
+import './postjobform.css';
+import Logout from "../logout";
+import Settings from "../settings";
+import Postjob from "../postjob/postjob";
+import HomeButton from "../homebutton/homebutton";
 
-export default class CdU5 extends React.Component {
+export default class PostJobForm extends React.Component {
     state = {
         category: "Designer",
         tipo: "",
@@ -28,7 +32,21 @@ export default class CdU5 extends React.Component {
 
     render() {
         return (
-            <>    
+            <div class="container">    
+                <div class="row float-right mr-2">
+                    <Logout />
+                    <Settings />
+                </div>
+                <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
+                <br />
+                <div class="row">
+                    <div class="input-group col-sm-6">
+                        <HomeButton />
+                    </div>
+                    <div class="input-group col-sm-2 ml-auto">
+                        <Postjob />
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="categoria">Category</label>
                     <select for="categoria" class="form-control" id="categoria" value={this.state.category} onChange={event => this.handleChange(event, "category")}>
@@ -73,7 +91,7 @@ export default class CdU5 extends React.Component {
                     <textarea id="desc" class="form-control" placeholder="Enter job description" rows="4" value={this.state.desc} onChange={event => this.handleChange(event, "desc")}></textarea>
                 </div>
                 <button onClick={this.handleSubmit}>Submit</button>
-            </>    
+            </div>    
         );
     }
 }
