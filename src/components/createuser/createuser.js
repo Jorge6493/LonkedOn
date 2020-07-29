@@ -11,7 +11,7 @@ export default class CreateUser extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: "",
+            username: "",
             password: "",
             type_of_user: ""
         }
@@ -19,11 +19,11 @@ export default class CreateUser extends React.Component {
 
     postContent() {
         axios.post("http://localhost:3500/jobs", {
-            user: this.state.user,
+            username: this.state.username,
             password: this.state.password, 
             type_of_user: this.state.type_of_user 
         }).then(this.setState({
-            user: "",
+            username: "",
             password: "",
             type_of_user: ""
         }))
@@ -52,8 +52,8 @@ export default class CreateUser extends React.Component {
                 </div>
                 <div class="col-md-6">
                 <div class="form-group">
-                    <label for="user">Username</label>
-                    <input type="text" class="form-control" placeholder="Enter username" id="user" value={this.state.user} onChange={event => this.handleChange(event, "user")}/>
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" placeholder="Enter username" id="username" value={this.state.username} onChange={event => this.handleChange(event, "username")}/>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
