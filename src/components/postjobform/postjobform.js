@@ -47,24 +47,6 @@ export default class PostJobForm extends React.Component {
                 image: URL.createObjectURL(event.target.files[0])
             });
         }
-    };
-
-    handleSubmit = event =>{
-        console.log('thisstate');
-        console.log(this.state)
-        // const result = await fetch("localhost:3500/jobs",{method:'POST', body:this.state, headers: { 'Content-Type': 'application/json' }})
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: this.state
-        };
-        fetch('localhost:3500/jobs', requestOptions)
-            .then(response => response.json())
-            .then(data => this.setState({ 
-                compania: data.compania,
-
-             },
-             console.log(data)));
     }
 
     render() {
