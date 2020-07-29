@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var User = require("../models/user_model").User;
+var Category = require("../models/category_model").Category;
 
 // Get All
 router.get('/', function (req, res, next) {
@@ -25,7 +25,7 @@ router.get('/:id', function (req, res, next) {
 router.post("/", function (req, res,next) {
 
 	var category = new Category({
-		name: req.body.category
+		category: req.body.category
 	});
 
 	category.save().then(function (us) {
@@ -33,7 +33,7 @@ router.post("/", function (req, res,next) {
 	}, function (err) {
 		if (err) {
 			console.log(String(err));
-			res.send("No se guardo el usuario")
+			res.send("No se guardo la categoria")
 		}
 	});
 });
