@@ -17,6 +17,10 @@ const jobs = [
   {
     title: `QA Engineer`,
   },
+  {
+    title: `Search`,
+  },
+  
 ];
 
 
@@ -41,8 +45,21 @@ class Table extends Component {
 
   componentDidMount() {
     // Simple GET request using axios
-    axios.get('http://localhost:3500/jobs')
+    // console.log("<4")
+
+    if (this.props.jobId===4){
+      console.log("=4")
+      axios.get('http://localhost:3500/jobs')
       .then(response => this.setState({ data: response.data, dataAvail: true }));
+
+    }
+    else{
+      console.log("!4")
+      axios.get('http://localhost:3500/jobs')
+      .then(response => this.setState({ data: response.data, dataAvail: true }));
+    }
+
+    
   }
 
   render() {
@@ -77,6 +94,7 @@ class Table extends Component {
             <MTableToolbar {...props} />
             <div style={{ padding: '0px 10px' }}>
               <h5>
+                {console.log(this.props.jobId)}
                 <Link to={'/jobs/' + this.props.jobId}>{jobs[this.props.jobId - 1].title}'s Table</Link>
               </h5>
             </div>

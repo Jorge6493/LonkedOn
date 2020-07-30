@@ -12,6 +12,7 @@ import JobDetail from './components/jobdetail/jobdetail';
 import SettingsView from './components/settingsview/settingsview';
 import CreateUser from './components/createuser/createuser';
 import Login from './components/login/login';
+import Search from './components/search/search';
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
              <Route path="/createuser" component={CreateUser} exact/>
              <Route path="/settings" component={SettingsView} exact/>
              <Route path="/login" component={Login} exact/>
-             {/* <Route path="/contact" component={Contact}/> */}
+             <Route path="/search" component={Search} exact/>
             <Route component={Error}/>
            </Switch>
         </div> 
