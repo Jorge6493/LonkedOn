@@ -10,6 +10,7 @@ var job_schema = new Schema({
 	type_of_job: { type: String, required: true },
 	category: { type: String, required: true },
 	logo: { type: String },
+	logo_extension: { type: String },
 	url: { type: String },
 	description: { type: String, required: true },
 	como_aplicar: { type: String },
