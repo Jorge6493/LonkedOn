@@ -20,7 +20,7 @@ function App() {
         <div>
           {/* <Navigation /> */}
             <Switch>
-             <Route path="/" component={Home} exact/>
+             <Route path="/" component={Login} exact/>
              <Route path="/jobs/:jobId" component={Jobs} exact/>
              <Route path="/postjob" component={PostJobForm} exact/>
              <Route path="/jobdetail" component={JobDetail} exact/>
