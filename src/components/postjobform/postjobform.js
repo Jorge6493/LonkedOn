@@ -65,124 +65,126 @@ export default class PostJobForm extends React.Component {
             <Postjob />
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="categoria">Category</label>
-            <select
-              for="categoria"
-              class="form-control"
-              id="categoria"
-              value={this.state.category}
-              onChange={(event) => this.handleChange(event, "category")}
-              required
-            >
-              <option selected disabled>
-                Choose a category
-              </option>
-              <option value="designer">Designer</option>
-              <option value="developer">Developer</option>
-              <option value="lead">Lead Developer</option>
-              <option value="artist">Artistoption</option>
-              <option value="director">Director</option>
-            </select>
+        <form action="/?_method=PUT" method="POST">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="categoria">Category</label>
+              <select
+                for="categoria"
+                class="form-control"
+                id="categoria"
+                value={this.state.category}
+                onChange={(event) => this.handleChange(event, "category")}
+                required
+              >
+                <option selected disabled>
+                  Choose a category
+                </option>
+                <option value="designer">Designer</option>
+                <option value="developer">Developer</option>
+                <option value="lead">Lead Developer</option>
+                <option value="artist">Artistoption</option>
+                <option value="director">Director</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="tipo">Type</label>
+              <select
+                for="categoria"
+                class="form-control"
+                id="tipo"
+                value={this.state.tipo}
+                onChange={(event) => this.handleChange(event, "tipo")}
+                required
+              >
+                <option value="fulltime">Full Time</option>
+                <option value="parttime">Part Time</option>
+                <option value="freelancer">Freelancer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="compania">Company</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter company name"
+                id="compania"
+                value={this.state.compania}
+                onChange={(event) => this.handleChange(event, "compania")}
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="logo">Logo</label>
+              <input
+                type="file"
+                class="form-control"
+                id="logo"
+                onChange={this.handleLogo}
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Contact Email</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter contact email address"
+                id="email"
+                value={this.state.email}
+                onChange={(event) => this.handleChange(event, "email")}
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="url">URL</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter company webpage"
+                id="url"
+                value={this.state.url}
+                onChange={(event) => this.handleChange(event, "url")}
+              />
+            </div>
+            <div class="form-group">
+              <label for="position">Position</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter available position"
+                id="position"
+                value={this.state.position}
+                onChange={(event) => this.handleChange(event, "position")}
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter company location"
+                id="location"
+                value={this.state.location}
+                onChange={(event) => this.handleChange(event, "location")}
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="desc">Description</label>
+              <textarea
+                id="desc"
+                class="form-control"
+                placeholder="Enter job description"
+                rows="4"
+                value={this.state.desc}
+                onChange={(event) => this.handleChange(event, "desc")}
+                required
+              ></textarea>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="tipo">Type</label>
-            <select
-              for="categoria"
-              class="form-control"
-              id="tipo"
-              value={this.state.tipo}
-              onChange={(event) => this.handleChange(event, "tipo")}
-              required
-            >
-              <option value="fulltime">Full Time</option>
-              <option value="parttime">Part Time</option>
-              <option value="freelancer">Freelancer</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="compania">Company</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter company name"
-              id="compania"
-              value={this.state.compania}
-              onChange={(event) => this.handleChange(event, "compania")}
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="logo">Logo</label>
-            <input
-              type="file"
-              class="form-control"
-              id="logo"
-              onChange={this.handleLogo}
-            />
-          </div>
-          <div class="form-group">
-            <label for="email">Contact Email</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter contact email address"
-              id="email"
-              value={this.state.email}
-              onChange={(event) => this.handleChange(event, "email")}
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="url">URL</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter company webpage"
-              id="url"
-              value={this.state.url}
-              onChange={(event) => this.handleChange(event, "url")}
-            />
-          </div>
-          <div class="form-group">
-            <label for="position">Position</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter available position"
-              id="position"
-              value={this.state.position}
-              onChange={(event) => this.handleChange(event, "position")}
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="location">Location</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter company location"
-              id="location"
-              value={this.state.location}
-              onChange={(event) => this.handleChange(event, "location")}
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="desc">Description</label>
-            <textarea
-              id="desc"
-              class="form-control"
-              placeholder="Enter job description"
-              rows="4"
-              value={this.state.desc}
-              onChange={(event) => this.handleChange(event, "desc")}
-              required
-            ></textarea>
-          </div>
-        </div>
-        <button onClick={this.postContent.bind(this)}>Submit</button>
+          <button onClick={this.postContent.bind(this)}>Submit</button>
+        </form>
       </div>
     );
   }
