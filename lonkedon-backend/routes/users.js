@@ -12,6 +12,26 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+//PUT
+router.put('/:id', function (req, res) {
+	User.findById(req.params.id, function (err, user) {
+		user.username = req.body.username;
+		user.password = req.body.password;
+		user.type_of_user = req.body.type_of_user;
+
+		user.save().then(
+			function (us) {
+				res.send("Guardamos tus datos");
+			},
+			function (err) {
+				if (err) {
+					res.send("No se guardo: " + String(err));
+				}
+			}
+		);
+	});
+});
+
 // Post
 router.post("/login", function (req, res, next) {
 	User.findOne({ username: req.body.username, password: req.body.password }, function (err, user) {

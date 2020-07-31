@@ -30,6 +30,35 @@ router.get('/:id', function (req, res, next) {
 	});
 });
 
+//PUT
+router.put('/:id', function (req, res) {
+	console.log(req.params.id);
+	Job.findById(req.params.id, function (err, job) {
+		job.location = req.body.location;
+		job.position = req.body.position;
+		job.company = req.body.company;
+		job.type_of_job = req.body.type_of_job;
+		job.category = req.body.category;
+		job.logo = req.body.logo;
+		job.url = req.body.url;
+		job.description = req.body.description;
+		job.como_aplicar = req.body.como_aplicar;
+		job.email = req.body.email;
+		job.publication_date = job.publication_date;
+
+		job.save().then(
+			function (us) {
+				res.send("Guardamos tus datos");
+			},
+			function (err) {
+				if (err) {
+					res.send("No se guardo: " + String(err));
+				}
+			}
+		);
+	});
+});
+
 
 
 // Delete

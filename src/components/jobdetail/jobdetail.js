@@ -4,9 +4,31 @@ import Logout from "../logout";
 import Settings from "../settings";
 import Postjob from "../postjob";
 import HomeButton from "../homebutton/homebutton";
+import axios from "axios";
 
 export default class JobDetail extends Component {
+
+    state = {
+        loading: true,
+        data: {},
+        dataAvail: null
+      }
+
+    componentDidMount() {
+        // Simple GET request using axios
+        axios.get('http://localhost:3500/jobs/'+this.props.match.params.jobId)
+          .then(response => this.setState({ data: response.data, dataAvail: true }));
+      }
+
+     
+    
     render() {
+        const dataAvail = this.state.dataAvail;
+        // let info;
+        if (dataAvail){
+            console.log(this.state.data)
+            
+        }
         return (
             <div class="container">
                 <div class="row float-right mr-2">
@@ -26,20 +48,21 @@ export default class JobDetail extends Component {
                 <br/>
                 <div class="row">
                 <div class="col-sm-9">
-                    <h3>Craigmann Association Inc.</h3>
-                    <h5>Miami, Florida, United States of America</h5>
-                    <hr/>
-                    <h5>Software Developer - Angular</h5>
-                    <hr/>
-                    <p>Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services. It is considered one of the Big Tech technology companies, alongside Amazon, Google, Microsoft and Facebook.</p>
-                    <br/>
-                    <h5>How to apply</h5>
-                    <br/>
-                    <p>Send your resume at pucmm@tigredeweb.com.do</p>
-                </div>
-                <div class="col-sm-3">
-                    <img alt='hola' src="https://images-na.ssl-images-amazon.com/images/I/710JXdscVsL._SY500_.jpg"></img>
-                </div>
+        <h3>{this.state.data.company}</h3>
+        <h5>{this.state.data.location}</h5>
+        <hr/>
+        <h5>{this.state.data.position}</h5>
+        <hr/>
+        <p>{this.state.data.description}</p>
+        <br/>
+        <h5>How to apply</h5>
+        <br/>
+        <p>Send your resume at {this.state.data.email}</p>
+        <p>{this.state.data.url}</p>
+    </div>
+    <div class="col-sm-3">
+        <img alt='hola' src="https://images-na.ssl-images-amazon.com/images/I/710JXdscVsL._SY500_.jpg"></img>
+    </div>
                 </div>
             </div>            
         );
