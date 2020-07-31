@@ -21,6 +21,24 @@ router.get('/:id', function (req, res, next) {
 	});
 });
 
+//PUT
+router.put('/:id', function (req, res) {
+	Category.findById(req.params.id, function (err, category) {
+		category.category = req.body.category;
+
+		category.save().then(
+			function (us) {
+				res.send("Guardamos tus datos");
+			},
+			function (err) {
+				if (err) {
+					res.send("No se guardo: " + String(err));
+				}
+			}
+		);
+	});
+});
+
 // Post
 router.post("/", function (req, res,next) {
 

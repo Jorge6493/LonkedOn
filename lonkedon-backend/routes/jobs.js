@@ -52,8 +52,7 @@ router.put('/:id', function (req, res) {
 			},
 			function (err) {
 				if (err) {
-					console.log(String(err));
-					res.send(req.body);
+					res.send("No se guardo: " + String(err));
 				}
 			}
 		);
