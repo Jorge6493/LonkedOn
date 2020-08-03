@@ -25,7 +25,8 @@ export default class PostJobForm extends React.Component {
       show: false,
         confirmed: false,
         categories: [],
-        id: ""
+        id: "",
+        multerImage: ""
       };
     }
 
@@ -62,7 +63,40 @@ export default class PostJobForm extends React.Component {
                 desc: ""
             });
         }     
-  };
+    };
+
+    setDefaultImage(uploadType) {
+        this.setState({
+            multerImage: ""
+        })
+    }
+
+    uploadImage(e, method) {
+        let imageObj = {};
+
+        if (method === "multer") {
+            let imageFormObj = new FormData();
+
+            imageFormObj.append("imageName", "multer-image-" + Date.now());
+            imageFormObj.append("imageData", e.target.files[0]);
+
+            this.setState({
+                multerImage: URL.createObjectURL(e.target.files[0])
+            });
+
+            axios.post('localhost:3500/image/uploadmulter', imageFormObj)
+                .then((data) => {
+                    if (data.data.success) {
+                        alert("Imagen fue subida con exito");
+                        this.setDefaultImage("multer");
+                    }
+                })
+                .catch((err) => {
+                    alert("Error subiendo la imagen");
+                    this.setDefaultImage("multer");
+                })
+        }
+    }
 
   postContent() {
     axios.post("http://localhost:3500/jobs", {
@@ -136,7 +170,7 @@ export default class PostJobForm extends React.Component {
     if(fieldName==="logo"){
       var nameString = event.target.value;
     var filename = nameString.split("\\").pop();
-    this.setState({ [fieldName]: filename });
+    this.setState({ ["logo"]: filename });
     // console.log(this.state)
 
     }
@@ -230,11 +264,9 @@ export default class PostJobForm extends React.Component {
                                 type="file"
                                 class="form-control"
                                 id="logo"
-                                //onChange={(event) => this.handleLogo(event)}
-                                onChange={(event) => this.handleChange(event, "logo")}
-
-
+                                onChange={(e) => this.uploadImage(e, "multer")}
                             />
+                            <img src={this.state.multerImage} alt="upload-image" className="process__image"/>
                         </div>
                         <div class="form-group">
                             <label for="email">Contact Email</label>
