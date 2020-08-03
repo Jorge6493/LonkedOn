@@ -91,13 +91,16 @@ export default class Login extends React.Component {
                             <input type="password" class="form-control" placeholder="Enter password" id="password" value={this.state.password} onChange={event => this.handleChange(event, "password")} />
                         </div>
                     </div>
-                    <div id="CreateUserButton">
-                        <Link to="/createuser">
-                            <button type="button" id="createuserbtn-btn" class="btn btn-primary">Create User</button>
-                        </Link>
+                    
+                    <div class="row">
+                        <button class="btn btn-primary" onClick={this.postContent.bind(this)}>Submit</button>
+                        <div id="CreateUserButton" class="ml-auto">
+                            <Link to="/createuser">
+                                <button type="button" id="createuserbtn-btn" class="btn btn-primary">Create User</button>
+                            </Link>
+                        </div>
                     </div>
-                    <br/>
-                    <button class="btn btn-primary" onClick={this.postContent.bind(this)}>Submit</button>
+                    
                 </div>
             );
         } else {
