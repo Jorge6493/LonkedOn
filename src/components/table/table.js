@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 // import { MTableToolbar } from 'material-table';
 import PageviewIcon from '@material-ui/icons/Pageview';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import EditIcon from '@material-ui/icons/Edit';
 
 const jobs = [
   {
@@ -90,8 +92,26 @@ class Table extends Component {
             onClick: (event, rowData) => {
               let id = rowData._id
               window.location = "/jobdetail/"+id}
-          }
-        ]}
+          },
+          {
+            icon: EditIcon,
+            tooltip: 'Edit Job',
+            onClick: (event, rowData) => {
+              let id = rowData._id
+              window.location = "/jobdetail/"+id}
+          },
+            {
+                icon: RemoveCircleIcon,
+                tooltip: 'Remove Job',
+                onClick: (event, rowData) => {
+                    let id = rowData._id
+                    axios.delete("http://localhost:3500/jobs/" + id, { params: { _id: id } }).then(
+                        response => console.log('deleted category')
+                    )
+
+                }
+            }
+          ]}
 
         title=''
         components={{
