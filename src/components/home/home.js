@@ -14,12 +14,10 @@ class Home extends Component {
         console.log('props home')
         console.log(this.props)
         if(this.props.user.type_of_user == "admin"){
-
             settings = <Settings />
         }
-        if(this.props.user.type_of_user == "poster"){
+        if(this.props.user.type_of_user == "poster" || this.props.user.type_of_user == "admin"){
             poster = <Postjob />
-
         } 
         return (
             <div class="container">
@@ -43,4 +41,3 @@ class Home extends Component {
 }
 
 export default Home;
-
