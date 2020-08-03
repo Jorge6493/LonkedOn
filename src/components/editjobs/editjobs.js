@@ -26,7 +26,7 @@ export default class EditJobs extends Component {
                         <Postjob />
                     </div>
                 </div>
-                <h3>Edit Jobs</h3>
+                <h3>Edit Job Postings</h3>
                 <br/>
                 <Table jobId="4" size="20"/>
             </div>
