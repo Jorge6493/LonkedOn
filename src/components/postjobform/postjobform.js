@@ -143,9 +143,7 @@ export default class PostJobForm extends React.Component {
               </option>
               <option value="designer" selected>Designer</option>
               <option value="developer">Developer</option>
-              <option value="lead">Lead Developer</option>
-              <option value="artist">Artistoption</option>
-              <option value="director">Director</option>
+              <option value="qaengineer">QA Engineer</option>
             </select>
           </div>
           <div class="form-group">
