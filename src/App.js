@@ -36,34 +36,35 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-
-          {/* <Navigation /> */}
-          <Switch>
-            <Route
-              path="/"
-              render={(props) => (
-                <Login {...props} changeUserData={this.changeUserData} />
-              )}
-              exact />
-            <Route
-              path="/home"
-              render={(props) => (
-                <Home {...props} user={this.state} />
-              )}
-              exact />
-
-            <Route path="/jobs/:jobId" component={Jobs} exact />
-            <Route path="/postjob" component={PostJobForm} exact />
-            <Route path="/jobdetail/:jobId" component={JobDetail} exact />
-            <Route path="/createuser" component={CreateUser} exact />
-            <Route path="/settings" component={SettingsView} exact />
-            <Route path="/login" component={Login} exact />
-            <Route path="/search" component={Search} exact />
-            <Route path="/editcat" component={EditCategory} exact />
-            <Route path="/editjobs" component={EditJobs} exact />
-            <Route component={Error} />
-          </Switch>
-
+          
+            {/* <Navigation /> */}
+              <Switch>
+               <Route 
+                path="/"  
+                render={(props) => (
+                  <Login {...props} changeUserData={this.changeUserData} />
+                )}
+                exact/>
+               <Route 
+                path="/home" 
+                render={(props) => (
+                  <Home {...props} user={this.state} />
+                )}
+                exact/>
+  
+                <Route path="/jobs/:jobId" component={Jobs} exact/>
+                <Route path="/postjob" component={PostJobForm} exact />
+                <Route path="/postjob/:jobId" component={PostJobForm} exact />
+                <Route path="/jobdetail/:jobId" component={JobDetail} exact/>
+                <Route path="/createuser" component={CreateUser} exact/>
+                <Route path="/settings" component={SettingsView} exact/>
+                <Route path="/login" component={Login} exact/>
+                <Route path="/search" component={Search} exact/>
+                <Route path="/editcat" component={EditCategory} exact/>
+                <Route path="/editjobs" component={EditJobs} exact/>
+                <Route component={Error}/>
+             </Switch>
+          
         </BrowserRouter>
       </div>
     );

@@ -24,12 +24,17 @@ export default class PostJobForm extends React.Component {
       desc: "",
       show: false,
         confirmed: false,
-        categories: []
+        categories: [],
+        id: ""
       };
     }
 
     componentDidMount() {
-        this.getCategories()
+        this.getCategories();
+
+        if (this.props.match.params.jobId) {
+                this.getJob();
+            }        
     }
 
     showModal = (e) => {
@@ -37,21 +42,26 @@ export default class PostJobForm extends React.Component {
         this.setState({ show: true });
     };
 
-  hideModal = () => {
-      this.postContent(this);
-      this.setState({
-          show: false,
-          category: "Design",
-          tipo: "fulltime",
-          compania: "",
-          logo: null,
-          email: "",
-          url: "",
-          position: "",
-          location: "",
-          desc: ""
-      });
-      alert("Tu posición ha sido posteada!")
+    hideModal = () => {
+        if (this.props.match.params.jobId) {
+            this.putContent(this);    
+            
+        }
+        else {
+            this.postContent(this);
+            this.setState({
+                show: false,
+                category: "Design",
+                tipo: "fulltime",
+                compania: "",
+                logo: null,
+                email: "",
+                url: "",
+                position: "",
+                location: "",
+                desc: ""
+            });
+        }     
   };
 
   postContent() {
@@ -66,6 +76,23 @@ export default class PostJobForm extends React.Component {
       description: this.state.desc,
       email: this.state.email,
     });
+    };
+
+    putContent() {
+        axios.put("http://localhost:3500/jobs/" + this.state.id, {
+            location: this.state.location,
+            position: this.state.position,
+            company: this.state.compania,
+            type_of_job: this.state.tipo,
+            category: this.state.category,
+            logo: this.state.logo,
+            url: this.state.url,
+            description: this.state.desc,
+            email: this.state.email
+        }).then(resp => {
+            this.componentDidMount();
+            alert("Tu posición ha sido actualizada!");
+        });        ;
     };
 
     getCategories() {
@@ -85,6 +112,25 @@ export default class PostJobForm extends React.Component {
             }
         });        
     };
+
+    getJob() {
+        axios.get("http://localhost:3500/jobs/" + this.props.match.params.jobId).then(resp => {
+            console.log(resp.data);
+            this.setState({
+                show: false,
+                category: resp.data["category"],
+                tipo: resp.data["type_of_job"],
+                compania: resp.data["company"],
+                logo: null,
+                email: resp.data["email"],
+                url: resp.data["url"],
+                position: resp.data["position"],
+                location: resp.data["location"],
+                desc: resp.data["description"],
+                id: resp.data["_id"]
+            });
+        })
+    }
 
   handleChange = (event, fieldName) => {
     if(fieldName==="logo"){
