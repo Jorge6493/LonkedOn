@@ -51,7 +51,7 @@ export default class PostJobForm extends React.Component {
           location: "",
           desc: ""
       });
-      alert("Trabajo ha sido posteado!")
+      alert("Tu posición ha sido posteada!")
   };
 
   postContent() {
@@ -97,7 +97,9 @@ export default class PostJobForm extends React.Component {
     else {
       this.setState({ [fieldName]: event.target.value });
     }  
-  };
+    };
+
+    handleClose = () => this.setState({ show: false });
 
   render() {
 
@@ -105,7 +107,7 @@ export default class PostJobForm extends React.Component {
 
     const modal = (
         <div>
-            <Modal show={show} onHide={this.hideModal} animation={true} size="lg">
+            <Modal show={show} onHide={this.handleClose} animation={true} size="lg">
               <Modal.Header closeButton>
                 <Modal.Title>Preview</Modal.Title>
               </Modal.Header>
