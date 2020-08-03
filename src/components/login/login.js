@@ -1,8 +1,5 @@
 import React from "react";
 import './login.css';
-import Settings from "../settings";
-import Postjob from "../postjob/postjob";
-import HomeButton from "../homebutton/homebutton";
 import axios from "axios";
 import Home from "../home";
 

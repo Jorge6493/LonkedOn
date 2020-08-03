@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 class Home extends Component {
     render() {
-        return(
+        return (
             <div class="container">
             <div class="row float-right mr-2">
                 <Logout/>

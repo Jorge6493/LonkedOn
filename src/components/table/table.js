@@ -57,9 +57,12 @@ class Table extends Component {
       axios.get('http://localhost:3500/jobs')
       .then(response => this.setState({ data: response.data, dataAvail: true }));
 
-    }
-    else{
-      console.log("!4")
+    } else if (this.props.jobId===5) {
+      console.log("=5");
+      axios.get('http://localhost:3500/categories')
+      .then(response => this.setState({ data: response.data, dataAvail: true }));
+    } else {
+      console.log("!4");
       console.log(jobs[this.props.jobId - 1].title)
       axios.get('http://localhost:3500/jobs/category/'+jobs[this.props.jobId - 1].value)
       .then(response => this.setState({ data: response.data, dataAvail: true }));
