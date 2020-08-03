@@ -40,7 +40,7 @@ export default class JobDetail extends Component {
                 
                 <div class="row float-right mr-2 buttons">
                     <Logout />
-                    <Settings />
+                    
                 </div>
                 <h1 class="ml-5 pt-4 title"> Bolsa de Empleos "Tigre de Web"</h1>
                 <hr />
@@ -48,7 +48,7 @@ export default class JobDetail extends Component {
                     <div class="col-sm-6">
                         <HomeButton />
                     </div>
-                    <Postjob />
+                    
                 </div>
                 <div class="card">
                     <div class="col-lg-12">
