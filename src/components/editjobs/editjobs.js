@@ -6,9 +6,9 @@ import Logout from '../logout'
 import Table from '../table'
 import HomeButton from "../homebutton/homebutton";
 
-import './home.css';
+import './editjobs.css';
 
-class Home extends Component {
+export default class EditJobs extends Component {
     render() {
         return (
             <div class="container">
@@ -26,6 +26,7 @@ class Home extends Component {
                         <Postjob />
                     </div>
                 </div>
+                <h3>Edit Jobs</h3>
                 <br/>
                 <Table jobId="4" size="20"/>
             </div>
@@ -33,6 +34,3 @@ class Home extends Component {
           );
       }
 }
-
-export default Home;
-

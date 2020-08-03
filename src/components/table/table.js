@@ -52,7 +52,7 @@ class Table extends Component {
     // Simple GET request using axios
     // console.log("<4")
 
-    if (this.props.jobId==4){
+    if (this.props.jobId===4){
       console.log("=4")
       axios.get('http://localhost:3500/jobs')
       .then(response => this.setState({ data: response.data, dataAvail: true }));
