@@ -51,18 +51,10 @@ export default class Login extends React.Component {
         if (!this.state.valid){
             return (
                 <div class="container">
-                    <div class="row float-right">
-                        <Settings />
-                    </div>
                     <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
                     <br />
                     <div class="row">
-                        <div class="input-group col-sm-6">
-                            <HomeButton />
-                        </div>
-                        <div class="input-group col-sm-2 ml-auto">
-                        <Postjob />
-                        </div>
+                        <h3 class="ml-3">Login</h3>
                     </div>
                     <div class="col-md-6 center">
                         <div class="form-group">
@@ -74,7 +66,7 @@ export default class Login extends React.Component {
                             <input type="password" class="form-control" placeholder="Enter password" id="password" value={this.state.password} onChange={event => this.handleChange(event, "password")} />
                         </div>
                     </div>
-                    <button onClick={this.postContent.bind(this)}>Submit</button>
+                    <button class="btn btn-primary" onClick={this.postContent.bind(this)}>Submit</button>
                 </div>
             );
         } else {
