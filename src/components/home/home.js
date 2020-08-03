@@ -9,35 +9,35 @@ import './home.css'
 
 class Home extends Component {
     render() {
-        return(
+        return (
             <div class="container">
-            <div class="row float-right mr-2">
-                <Logout/>
-                <Settings/>
-            </div>
-            <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
-            <br/>
-            <div class="row">
-                <div class="input-group col-sm-2 ml-auto">
-                    <Postjob/>
+                <div class="row float-right mr-2">
+                    <Logout />
+                    <Settings />
+                </div>
+                <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
+                <br />
+                <div class="row">
+                    <div class="input-group col-sm-2 ml-auto">
+                        <Postjob />
+                    </div>
+                </div>
+                <br />
+                <div class="container">
+                    <Table jobId="1" size="10" />
+                </div>
+                <br />
+                <div class="container">
+                    <Table jobId="2" size="10" />
+                </div>
+                <br />
+                <div class="container">
+                    <Table jobId="3" size="10" />
                 </div>
             </div>
-            <br/>
-            <div class="container">
-                <Table jobId="1" size="10"/>
-            </div>
-            <br/>
-            <div class="container">
-                <Table jobId="2" size="10"/>
-            </div>
-            <br/>
-            <div class="container">
-                <Table jobId="3" size="10"/>
-            </div>
-            </div>
-          
-          );
-      }
+
+        );
+    }
 }
 
 export default Home;
