@@ -39,20 +39,9 @@ class Table extends Component {
     loading: true,
     data: {},
     dataAvail: null
-  }
-
-  //   async componentDidMount() {
-  //     // GET request using axios with async/await
-
-  //     const response = await axios.get('http://localhost:3500/jobs');
-  //     this.setState({ data: response.data })
-  //     console.log('response')
-  //     console.log(response.data)
-  // }
+    }
 
   componentDidMount() {
-    // Simple GET request using axios
-    // console.log("<4")
 
     if (this.props.jobId==4){
       console.log("=4")
@@ -70,8 +59,6 @@ class Table extends Component {
   }
 
   render() {
-    // console.log('ta entrando')
-    // console.log(this.state.data)
 
     const dataAvail = this.state.dataAvail;
     let table;
@@ -118,10 +105,6 @@ class Table extends Component {
           Toolbar: props => (<div>
             <MTableToolbar {...props} />
             <div style={{ padding: '0px 10px' }}>
-              <h5>
-                {/* {console.log(this.props.jobId)} */}
-                <Link to={'/jobs/' + this.props.jobId}>{jobs[this.props.jobId - 1].title}'s Table</Link>
-              </h5>
             </div>
           </div>
 
