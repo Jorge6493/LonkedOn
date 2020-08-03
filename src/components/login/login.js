@@ -80,7 +80,7 @@ export default class Login extends React.Component {
             );
         } else {
             return (
-                <Home/>
+                <Home user={this.state}/>
             );
         }
     }

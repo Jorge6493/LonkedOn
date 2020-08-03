@@ -26,9 +26,9 @@ class App extends Component {
 
   changeUserData = (data) => {
     this.setState({
-      username: this.data.username, 
-      password: this.data.password, 
-      type_of_user: this.data.type_of_user
+      username: data.username, 
+      password: data.password, 
+      type_of_user: data.type_of_user
     });
   }
 

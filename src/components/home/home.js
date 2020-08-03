@@ -14,7 +14,7 @@ class Home extends Component {
                 <div class="row float-right mr-2 buttons"> 
                     <Logout />
                     {
-                        this.props.user.type_of_user == "Admin" &&
+                        this.props.type_of_user == "Admin" &&
                         <Settings />
                     }
                 </div>
@@ -23,7 +23,7 @@ class Home extends Component {
                 <div class="button row clearfix">
                     <div class="col-sm-2 ml-auto">
                         {
-                            this.props.user.type_of_user == "Poster" &&
+                            this.props.type_of_user == "Poster" &&
                             <Postjob />
                         }
                     </div>
