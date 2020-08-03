@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import "./postjobform.css";
 import Logout from "../logout";
 import Settings from "../settings";
@@ -23,9 +23,17 @@ export default class PostJobForm extends React.Component {
       location: "",
       desc: "",
       show: false,
-      confirmed: false
-    };
-  }
+        confirmed: false,
+        categories: []
+      };
+
+      
+
+    }
+
+    componentDidMount() {
+        this.getCategories()
+    }
 
     showModal = (e) => {
         e.preventDefault();
@@ -60,7 +68,25 @@ export default class PostJobForm extends React.Component {
       description: this.state.desc,
       email: this.state.email,
     });
-};
+    };
+
+    getCategories() {
+        axios.get("http://localhost:3500/categories").then(resp => {
+            for (var k in resp.data) {
+                this.state.categories.push(resp.data[k]["category"]);
+            }
+            console.log(this.state.categories);
+            var select = document.getElementById("categoria");
+
+            for (var i = 0; i < this.state.categories.length; i++) {
+                var opt = this.state.categories[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+            }
+        });        
+    };
 
   handleChange = (event, fieldName) => {
     if(fieldName==="logo"){
@@ -125,14 +151,6 @@ export default class PostJobForm extends React.Component {
                       onChange={(event) => this.handleChange(event, "category")}
                       required
                     >
-                      <option selected disabled>
-                        Choose a category
-                      </option>
-                      <option value="designer" selected>Designer</option>
-                      <option value="developer">Developer</option>
-                      <option value="lead">Lead Developer</option>
-                      <option value="artist">Artistoption</option>
-                      <option value="director">Director</option>
                     </select>
                   </div>
                   <div class="form-group">
