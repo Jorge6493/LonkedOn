@@ -106,7 +106,7 @@ class Table extends Component {
                 onClick: (event, rowData) => {
                     let id = rowData._id
                     axios.delete("http://localhost:3500/jobs/" + id, { params: { _id: id } }).then(
-                        response => console.log('deleted category')
+                        response => this.componentDidMount()
                     )
 
                 }
