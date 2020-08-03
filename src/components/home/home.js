@@ -11,13 +11,13 @@ class Home extends Component {
     render() {
         let settings
         let poster
-        console.log('props')
+        console.log('props home')
         console.log(this.props)
-        if(this.props.type_of_user == "admin"){
+        if(this.props.user.type_of_user == "admin"){
 
             settings = <Settings />
         }
-        if(this.props.type_of_user == "Poster"){
+        if(this.props.user.type_of_user == "Poster"){
             poster = <Postjob />
 
         } 

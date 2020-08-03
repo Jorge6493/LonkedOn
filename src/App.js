@@ -26,6 +26,7 @@ class App extends Component {
   }
 
   changeUserData = (data) => {
+    console.log('changeuserdata')
     this.setState({
       username: data.username, 
       password: data.password, 

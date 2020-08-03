@@ -43,26 +43,33 @@ export default class Login extends React.Component {
                 this.user_id = response.data;
                 console.log('userid')
                 // console.log(response.data)
-                axios.get("http://localhost:3500/users/5f27d58193d332179cbf4b7f").then(
-                    response => this.setState({ type_of_user: response.data.type_of_user }),
-                    console.log('response'),
-                    console.log(response)
+                axios.get("http://localhost:3500/users/"+ response.data).then(
+                    response => {
+                        console.log('response')
+                            console.log(response)
+                        this.setState({ 
+                            username: response.data.username,
+                            password: response.data.password,
+                            type_of_user: response.data.type_of_user })
+                            console.log('state')
+                            console.log(this.state)
+                            this.props.changeUserData(this.state);
+                            
+                            this.setState({
+                                username: "",
+                                password: "",
+                                valid: true,
+                                type_of_user: ""
+                            })
+                            this.props.history.push('/home');
+                            
+                        }
                     )
                 
                 // console.log('state login')
                 // console.log(this.state)
                 // console.log('props')
-                console.log('state')
-                console.log(this.state)
-                this.props.changeUserData(this.state);
-                
-                this.setState({
-                    username: "",
-                    password: "",
-                    valid: true,
-                    type_of_user: ""
-                })
-                this.props.history.push('/home');
+               
             }
         })
     }
