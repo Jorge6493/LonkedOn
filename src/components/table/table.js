@@ -22,7 +22,7 @@ const jobs = [
     value: 'qaengineer'
   },
   {
-    title: 'Search',
+    title: 'Job Posting',
     value: 'search'
   },
   

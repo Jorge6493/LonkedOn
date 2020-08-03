@@ -13,37 +13,22 @@ class Home extends Component {
     render() {
         return (
             <div class="container">
-            <div class="row float-right mr-2">
-                <Logout/>
-                <Settings/>
-            </div>
-            <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
-            <hr/>
-            <div class="row">
-            <div class="input-group col-sm-2 ml-auto">
-            <HomeButton />
-          </div>
-          <div class="input-group col-sm-2 ml-auto">
-          <Link to="/search">
-          <button type="button" id="search-btn" class="btn btn-primary">Search</button>
-        </Link>
-          </div>
-                <div class="input-group col-sm-2 ml-auto">
-                    <Postjob/>
+                <div class="row float-right mr-2 buttons">
+                    <Logout />
+                    <Settings />
                 </div>
-            </div>
-            <br/>
-            <div class="container">
+                <h1 class="ml-5 pt-4 title"> Bolsa de Empleos "Tigre de Web"</h1>
+                <hr />
+                <div class="button row clearfix">
+                    <div class="col-sm-6">
+                        <HomeButton />
+                    </div>
+                    <div class="col-sm-2 ml-auto">
+                        <Postjob />
+                    </div>
+                </div>
+                <br/>
                 <Table jobId="4" size="20"/>
-            </div>
-            {/* <br/>
-            <div class="container">
-                <Table jobId="2" size="10"/>
-            </div>
-            <br/>
-            <div class="container">
-                <Table jobId="3" size="10"/>
-            </div> */}
             </div>
           
           );

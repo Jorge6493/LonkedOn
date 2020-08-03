@@ -49,7 +49,7 @@ export default class Login extends React.Component {
             return (
                 <div class="container">
                     <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
-                    <br />
+                    <hr />
                     <div class="row">
                         <h3 class="ml-3">Login</h3>
                     </div>
