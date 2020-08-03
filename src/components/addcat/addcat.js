@@ -6,7 +6,7 @@ export default class AddCategory extends React.Component {
   render() {
     return (
       <div id="AddCatButton">
-        <Link to="/">
+        <Link to="/addcatview">
           <button type="button" id="homebtn-btn" class="btn btn-primary">Add Category</button>
         </Link>
       </div>

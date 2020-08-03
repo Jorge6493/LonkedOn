@@ -39,43 +39,26 @@ class Table extends Component {
     loading: true,
     data: {},
     dataAvail: null
-  }
-
-  //   async componentDidMount() {
-  //     // GET request using axios with async/await
-
-  //     const response = await axios.get('http://localhost:3500/jobs');
-  //     this.setState({ data: response.data })
-  //     console.log('response')
-  //     console.log(response.data)
-  // }
-
-  componentDidMount() {
-    // Simple GET request using axios
-    // console.log("<4")
-
-    if (this.props.jobId==4){
-      console.log("=4")
-      axios.get('http://localhost:3500/jobs')
-      .then(response => this.setState({ data: response.data, dataAvail: true }));
-
-    } else {
-      console.log("!4");
-      console.log(jobs[this.props.jobId - 1].title)
-      axios.get('http://localhost:3500/jobs/category/'+jobs[this.props.jobId - 1].value)
-      .then(response => this.setState({ data: response.data, dataAvail: true }));
     }
 
-    
-  }
+    componentDidMount() {
+
+        axios.get('http://localhost:3500/jobs')
+            .then(response => this.setState({ data: response.data, dataAvail: true }));
+
+        //} else {
+        //  console.log("!4");
+        //  console.log(jobs[this.props.jobId - 1].title)
+        //  axios.get('http://localhost:3500/jobs/category/'+jobs[this.props.jobId - 1].value)
+        //  .then(response => this.setState({ data: response.data, dataAvail: true }));
+        //}    
+    }
 
   render() {
-    // console.log('ta entrando')
-    // console.log(this.state.data)
 
     const dataAvail = this.state.dataAvail;
     let table;
-    if (dataAvail) {
+     if (dataAvail && this.props.jobId == 1) {
       table = <MaterialTable
         options={{ pageSize: parseInt(this.props.size), search: true ,actionsColumnIndex: -1}}
         columns={[
@@ -98,26 +81,26 @@ class Table extends Component {
             tooltip: 'Edit Job',
             onClick: (event, rowData) => {
               let id = rowData._id
-              window.location = "/jobdetail/"+id}
+              window.location = "/postjob/"+id}
           },
-          {
-            icon: RemoveCircleIcon,
-            tooltip: 'Remove Job',
-            onClick: (event, rowData) => {
-              let id = rowData._id
-              window.location = "/jobdetail/"+id}
-          }
-        ]}
+            {
+                icon: RemoveCircleIcon,
+                tooltip: 'Remove Job',
+                onClick: (event, rowData) => {
+                    let id = rowData._id
+                    axios.delete("http://localhost:3500/jobs/" + id, { params: { _id: id } }).then(
+                        response => this.componentDidMount()
+                    )
+
+                }
+            }
+          ]}
 
         title=''
         components={{
           Toolbar: props => (<div>
             <MTableToolbar {...props} />
             <div style={{ padding: '0px 10px' }}>
-              <h5>
-                {/* {console.log(this.props.jobId)} */}
-                <Link to={'/jobs/' + this.props.jobId}>{jobs[this.props.jobId - 1].title}'s Table</Link>
-              </h5>
             </div>
           </div>
 
@@ -126,6 +109,41 @@ class Table extends Component {
 
       />;
     }
+
+      if (dataAvail && this.props.jobId == 4) {
+          table = <MaterialTable
+              options={{ pageSize: parseInt(this.props.size), search: true, actionsColumnIndex: -1 }}
+              columns={[
+                  { title: 'Location', field: 'location' },
+                  { title: 'Position', field: 'position' },
+                  { title: 'Category', field: 'category' }
+              ]}
+
+              data={this.state.data}
+              actions={[
+                  {
+                      icon: PageviewIcon,
+                      tooltip: 'View Job',
+                      onClick: (event, rowData) => {
+                          let id = rowData._id
+                          window.location = "/jobdetail/" + id
+                      }
+                  }
+              ]}
+
+              title=''
+              components={{
+                  Toolbar: props => (<div>
+                      <MTableToolbar {...props} />
+                      <div style={{ padding: '0px 10px' }}>
+                      </div>
+                  </div>
+
+                  )
+              }}
+
+          />;
+      }
 
     return (
       <div style={{ maxWidth: '100%' }}>
