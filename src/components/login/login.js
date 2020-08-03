@@ -2,6 +2,7 @@ import React from "react";
 import './login.css';
 import axios from "axios";
 import Home from "../home";
+import { Link } from "react-router-dom";
 
 export default class Login extends React.Component {
 
@@ -10,9 +11,15 @@ export default class Login extends React.Component {
         this.state = {
             username: "",
             password: "",
-            valid: false
+            valid: false,
+            type_of_user: ""
         }
         this.user_id = "";
+        this.teststate = {
+            username: "franz",
+            password: "1234",
+            type_of_user: "Poster"
+        }
     }
 
     postContent() {
@@ -31,11 +38,13 @@ export default class Login extends React.Component {
 
             else {
                 this.user_id = response.data;
+                this.props.changeUserData(this.teststate);
                 this.setState({
                     username: "",
                     password: "",
                     valid: true
                 })
+                this.props.history.push('/home');
             }
         })
     }
@@ -63,6 +72,12 @@ export default class Login extends React.Component {
                             <input type="password" class="form-control" placeholder="Enter password" id="password" value={this.state.password} onChange={event => this.handleChange(event, "password")} />
                         </div>
                     </div>
+                    <div id="CreateUserButton">
+                        <Link to="/createuser">
+                            <button type="button" id="createuserbtn-btn" class="btn btn-primary">Create User</button>
+                        </Link>
+                    </div>
+                    <br/>
                     <button class="btn btn-primary" onClick={this.postContent.bind(this)}>Submit</button>
                 </div>
             );

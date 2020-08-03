@@ -6,7 +6,7 @@ export default class HomeButton extends React.Component {
   render() {
     return (
       <div id="HomeButton">
-        <Link to="/">
+        <Link to="/home">
           <button type="button" id="homebtn-btn" class="btn btn-primary">Home</button>
         </Link>
       </div>
