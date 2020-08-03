@@ -16,7 +16,7 @@ class Home extends Component {
                 <Settings/>
             </div>
             <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
-            <br/>
+            <hr/>
             <div class="row">
                 <div class="input-group col-sm-2 ml-auto">
                     <Postjob/>

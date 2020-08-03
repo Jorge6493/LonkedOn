@@ -36,3 +36,24 @@ h1 {
   .display-none {
     display: none;
   }
+
+  .button {
+      padding-bottom: 2%;
+  }
+
+  .form-prepare{
+      float: right
+  }
+
+  .mainthing{
+      align-self:center
+  }
+
+  .title{
+      align-self: center
+  }
+
+  .buttons{
+      margin-top:2%;
+      font-size: 0.75em
+  }
