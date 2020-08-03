@@ -77,7 +77,9 @@ export default class PostJobForm extends React.Component {
       url: this.state.url,
       description: this.state.desc,
       email: this.state.email,
-    });
+    }).then(resp => {
+        alert("Tu posición ha sido posteada!");
+    }); 
     };
 
     putContent() {
