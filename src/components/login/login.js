@@ -96,7 +96,7 @@ export default class Login extends React.Component {
                         <button class="btn btn-primary" onClick={this.postContent.bind(this)}>Submit</button>
                         <div id="CreateUserButton" class="ml-auto">
                             <Link to="/createuser">
-                                <button type="button" id="createuserbtn-btn" class="btn btn-primary">Create User</button>
+                                <button type="button" id="createuserbtn-btn" class="btn btn-secondary">Create User</button>
                             </Link>
                         </div>
                     </div>
