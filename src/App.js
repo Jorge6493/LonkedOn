@@ -14,6 +14,7 @@ import CreateUser from './components/createuser/createuser';
 import Login from './components/login/login';
 import Search from './components/search/search';
 import EditCategory from './components/editcat/editcat';
+import EditJobs from './components/editjobs/editjobs';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
              <Route path="/login" component={Login} exact/>
              <Route path="/search" component={Search} exact/>
              <Route path="/editcat" component={EditCategory} exact/>
+             <Route path="/editjobs" component={EditJobs} exact/>
             <Route component={Error}/>
            </Switch>
         </div> 
