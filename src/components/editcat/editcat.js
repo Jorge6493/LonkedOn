@@ -23,8 +23,6 @@ export default class EditCategory extends React.Component {
     componentDidMount(){
         axios.get('http://localhost:3500/categories')
         .then(response => this.setState({ data: response.data, dataAvail: true }));
-        
-
     }
         
       
@@ -50,7 +48,7 @@ export default class EditCategory extends React.Component {
                   let id = rowData._id
                   console.log(id)
                   
-                  axios.delete('http://localhost:3500/categories/'+id).then(response => console.log('deleted category'))
+                    axios.delete("http://localhost:3500/categories/" + id, { params: { _id: id } }).then(response => console.log('deleted category'))
                 }
               },
               {
@@ -60,7 +58,7 @@ export default class EditCategory extends React.Component {
                   let id = rowData._id
                   console.log(id)
                   
-                  axios.delete('http://localhost:3500/categories/'+id).then(response => console.log('deleted category'))
+                    axios.delete("http://localhost:3500/categories/" + id, { params: { _id: id } }).then(response => console.log('deleted category'))
                 }
               }
             ]}
@@ -71,8 +69,6 @@ export default class EditCategory extends React.Component {
                 <MTableToolbar {...props} />
                 <div style={{ padding: '0px 10px' }}>
                   <h5>
-                    {/* {console.log(this.props.jobId)} */}
-                    {/* <Link to={'/jobs/' + this.props.jobId}>{jobs[this.props.jobId - 1].title}'s Table</Link> */}
                   </h5>
                 </div>
               </div>
