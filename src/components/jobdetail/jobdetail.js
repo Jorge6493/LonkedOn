@@ -21,8 +21,8 @@ export default class JobDetail extends Component {
 
     componentDidMount() {
         // Simple GET request using axios
-        axios.get('http://localhost:3500/jobs/'+this.props.match.params.jobId)
-          .then(response => this.setState({ data: response.data, dataAvail: true }));
+        axios.get('http://localhost:3500/jobs/' + this.props.match.params.jobId)
+            .then(response => this.setState({ data: response.data, dataAvail: true}));
       }
 
      
@@ -55,13 +55,13 @@ export default class JobDetail extends Component {
                         <div class="info">
                             <h2><i><b>{this.state.data.position}</b></i></h2>
                             <hr />
-                            <h3>{this.state.data.company}</h3>
+                            <h3><b>{this.state.data.company}</b></h3>
                             <i><h5>{this.state.data.location}</h5></i>
                             <br/>
                             <p>{this.state.data.description}</p>
                             <br />
                             <h5>C&oacute;mo Aplicar</h5>
-                            <h6>Env&iacute;a tu CV: <b>{this.state.data.email}</b></h6>
+                            <h6>Env&iacute;a tu CV: <a href={"mailto:" + this.state.data.email}> <b>{this.state.data.email}</b></a></h6>
                             <br/>
                                 <a href={this.state.data.url}>{this.state.data.url}</a>
                         </div>
