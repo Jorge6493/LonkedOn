@@ -42,23 +42,11 @@ export default class EditCategory extends React.Component {
             data={this.state.data}
             actions={[
               {
-                icon: EditIcon,
-                tooltip: 'Edit',
-                onClick: (event, rowData) => {
-                  let id = rowData._id
-                  console.log(id)
-                  
-                    axios.delete("http://localhost:3500/categories/" + id, { params: { _id: id } }).then(response => console.log('deleted category'))
-                }
-              },
-              {
                 icon: RemoveCircleIcon,
                 tooltip: 'Delete',
                 onClick: (event, rowData) => {
-                  let id = rowData._id
-                  console.log(id)
-                  
-                    axios.delete("http://localhost:3500/categories/" + id, { params: { _id: id } }).then(response => console.log('deleted category'))
+                  let id = rowData._id                  
+                    axios.delete("http://localhost:3500/categories/" + id, { params: { _id: id } }).then(response => this.componentDidMount() )
                 }
               }
             ]}
