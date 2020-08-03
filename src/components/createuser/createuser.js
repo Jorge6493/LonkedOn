@@ -1,9 +1,6 @@
 import React from "react";
 import './createuser.css';
-import Logout from "../logout";
-import Settings from "../settings";
-import Postjob from "../postjob/postjob";
-import HomeButton from "../homebutton/homebutton";
+import Back2Login from '../back2loginbutton/back2login.js';
 import axios from "axios";
 
 export default class CreateUser extends React.Component {
@@ -36,19 +33,12 @@ export default class CreateUser extends React.Component {
 
     render() {
         return (
-            <div class="container">    
-                <div class="row float-right mr-2">
-                    <Logout />
-                    <Settings />
-                </div>
+            <div class="container">
                 <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
                 <br />
                 <div class="row">
                     <div class="input-group col-sm-6">
-                        <HomeButton />
-                    </div>
-                    <div class="input-group col-sm-2 ml-auto">
-                        <Postjob />
+                        <Back2Login />
                     </div>
                 </div>
                 <div class="col-md-6">
