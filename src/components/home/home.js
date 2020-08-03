@@ -23,9 +23,7 @@ class Home extends Component {
                     <div class="col-sm-6">
                         <HomeButton />
                     </div>
-                    <div class="col-sm-2 ml-auto">
-                        <Postjob />
-                    </div>
+                    <Postjob />
                 </div>
                 <br/>
                 <Table jobId="4" size="20"/>

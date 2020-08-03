@@ -129,13 +129,11 @@ export default class PostJobForm extends React.Component {
                 </div>
                 <h1 class="ml-5 pt-4 title"> Bolsa de Empleos "Tigre de Web"</h1>
                 <hr />
-                <div class="button row clearfix">
+                <div class="button row">
                     <div class="col-sm-6">
                         <HomeButton />
                     </div>
-                    <div class="col-sm-2 ml-auto">
-                        <Postjob />
-                    </div>
+                    <Postjob />
                 </div>
                 <div class="col-lg-9 form-prepare">
                     <form id="leform" class="col-md-6" onSubmit={this.showModal}>
@@ -250,7 +248,7 @@ export default class PostJobForm extends React.Component {
                             ></textarea>
                         </div>
 
-                        <button type="submit"> Submit </button>
+                        <button type="submit" class="btn btn-secondary"> Submit </button>
                     </form>
                 </div>
                 
