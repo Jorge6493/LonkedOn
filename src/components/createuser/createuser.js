@@ -18,7 +18,7 @@ export default class CreateUser extends React.Component {
     }
 
     postContent() {
-        axios.post("http://localhost:3500/jobs", {
+        axios.post("http://localhost:3500/users", {
             username: this.state.username,
             password: this.state.password, 
             type_of_user: this.state.type_of_user 
