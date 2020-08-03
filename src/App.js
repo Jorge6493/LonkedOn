@@ -15,7 +15,6 @@ import Login from './components/login/login';
 import Search from './components/search/search';
 import EditCategory from './components/editcat/editcat';
 import EditJobs from './components/editjobs/editjobs';
-import AddCatView from './components/addcatview/addcatview';
 
 
 class App extends Component {
@@ -62,7 +61,6 @@ class App extends Component {
             <Route path="/search" component={Search} exact />
             <Route path="/editcat" component={EditCategory} exact />
             <Route path="/editjobs" component={EditJobs} exact />
-            <Route path="/addcatview" component={AddCatView} exact/>
             <Route component={Error} />
           </Switch>
 
