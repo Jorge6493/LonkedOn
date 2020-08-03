@@ -27,22 +27,40 @@ export default class Login extends React.Component {
             username: this.state.username,
             password: this.state.password
         }).then((response) => {
+            // console.log('response')
+            // console.log(response)
             if (response.data === "") {
                 alert("Incorrect Username or Password");
                 this.setState({
                     username: "",
                     password: "",
-                    valid: false
+                    valid: false,
+                    type_of_user: ""
                 })
             }
 
             else {
                 this.user_id = response.data;
-                this.props.changeUserData(this.teststate);
+                console.log('userid')
+                // console.log(response.data)
+                axios.get("http://localhost:3500/users/5f27d58193d332179cbf4b7f").then(
+                    response => this.setState({ type_of_user: response.data.type_of_user }),
+                    console.log('response'),
+                    console.log(response)
+                    )
+                
+                // console.log('state login')
+                // console.log(this.state)
+                // console.log('props')
+                console.log('state')
+                console.log(this.state)
+                this.props.changeUserData(this.state);
+                
                 this.setState({
                     username: "",
                     password: "",
-                    valid: true
+                    valid: true,
+                    type_of_user: ""
                 })
                 this.props.history.push('/home');
             }

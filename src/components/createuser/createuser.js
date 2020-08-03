@@ -13,12 +13,12 @@ export default class CreateUser extends React.Component {
         this.state = {
             username: "",
             password: "",
-            type_of_user: ""
+            type_of_user: "admin"
         }
     }
 
     postContent() {
-        axios.post("http://localhost:3500/jobs", {
+        axios.post("http://localhost:3500/users", {
             username: this.state.username,
             password: this.state.password, 
             type_of_user: this.state.type_of_user 
@@ -63,7 +63,7 @@ export default class CreateUser extends React.Component {
                 <div class="form-group">
                     <label for="type_of_user">Type of User</label>
                     <select for="categoria" class="form-control" id="type_of_user" value={this.state.type_of_user} onChange={event => this.handleChange(event, "type_of_user")}>
-                        <option value="administrator">Administrator</option>
+                        <option value="admin" selected>Administrator</option>
                         <option value="user">User</option>
                         <option value="poster">Poster</option>
                     </select>
