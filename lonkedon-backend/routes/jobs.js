@@ -82,7 +82,7 @@ router.post("/", function (req, res,next) {
 		logo: req.body.logo,
 		url: req.body.url,
 		description: req.body.description,
-		como_aplicar: "Por favor enviar un correo electrónico a " + req.body.email,
+		como_aplicar: "Por favor enviar un correo electronico a " + req.body.email,
 		email: req.body.email,
 		publication_date: Date.now()
 	});
