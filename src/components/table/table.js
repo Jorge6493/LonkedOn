@@ -85,7 +85,7 @@ class Table extends Component {
             tooltip: 'Edit Job',
             onClick: (event, rowData) => {
               let id = rowData._id
-              window.location = "/jobdetail/"+id}
+              window.location = "/postjob/"+id}
           },
             {
                 icon: RemoveCircleIcon,

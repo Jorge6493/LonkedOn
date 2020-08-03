@@ -52,16 +52,17 @@ class App extends Component {
                 )}
                 exact/>
   
-               <Route path="/jobs/:jobId" component={Jobs} exact/>
-               <Route path="/postjob" component={PostJobForm} exact/>
-               <Route path="/jobdetail/:jobId" component={JobDetail} exact/>
-               <Route path="/createuser" component={CreateUser} exact/>
-               <Route path="/settings" component={SettingsView} exact/>
-               <Route path="/login" component={Login} exact/>
-               <Route path="/search" component={Search} exact/>
-               <Route path="/editcat" component={EditCategory} exact/>
-               <Route path="/editjobs" component={EditJobs} exact/>
-              <Route component={Error}/>
+                <Route path="/jobs/:jobId" component={Jobs} exact/>
+                <Route path="/postjob" component={PostJobForm} exact />
+                <Route path="/postjob/:jobId" component={PostJobForm} exact />
+                <Route path="/jobdetail/:jobId" component={JobDetail} exact/>
+                <Route path="/createuser" component={CreateUser} exact/>
+                <Route path="/settings" component={SettingsView} exact/>
+                <Route path="/login" component={Login} exact/>
+                <Route path="/search" component={Search} exact/>
+                <Route path="/editcat" component={EditCategory} exact/>
+                <Route path="/editjobs" component={EditJobs} exact/>
+                <Route component={Error}/>
              </Switch>
           
         </BrowserRouter>
