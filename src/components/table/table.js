@@ -6,6 +6,7 @@ import './table.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 // import { MTableToolbar } from 'material-table';
+import PageviewIcon from '@material-ui/icons/Pageview';
 
 const jobs = [
   {
@@ -51,7 +52,7 @@ class Table extends Component {
     // Simple GET request using axios
     // console.log("<4")
 
-    if (this.props.jobId===4){
+    if (this.props.jobId==4){
       console.log("=4")
       axios.get('http://localhost:3500/jobs')
       .then(response => this.setState({ data: response.data, dataAvail: true }));
@@ -75,7 +76,7 @@ class Table extends Component {
     let table;
     if (dataAvail) {
       table = <MaterialTable
-        options={{ pageSize: parseInt(this.props.size), search: true }}
+        options={{ pageSize: parseInt(this.props.size), search: true ,actionsColumnIndex: -1}}
         columns={[
           { title: 'Location', field: 'location' },
           { title: 'Position', field: 'position' },
@@ -85,8 +86,8 @@ class Table extends Component {
         data={this.state.data}
         actions={[
           {
-            icon: 'save',
-            tooltip: 'Save User',
+            icon: PageviewIcon,
+            tooltip: 'View Job',
             onClick: (event, rowData) => {
               let id = rowData._id
               window.location = "/jobdetail/"+id}

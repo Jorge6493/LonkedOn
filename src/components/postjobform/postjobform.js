@@ -245,7 +245,7 @@ export default class PostJobForm extends React.Component {
             ></textarea>
           </div>
         </div>
-        <button onClick={this.showModal}>Submit</button>
+        <button class="btn btn-primary" onClick={this.showModal}>Submit</button>
       </div>
     );
   }
