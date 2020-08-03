@@ -4,14 +4,17 @@ import Logout from "../logout";
 import Settings from "../settings";
 import Postjob from "../postjob/postjob";
 import HomeButton from "../homebutton/homebutton";
+import JobformPreviewModal from "../jobform-preview-modal"
 import axios from "axios";
+import Modal from "react-bootstrap/Modal"
+import Button from "react-bootstrap/Button"
 
 export default class PostJobForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: "",
-      tipo: "",
+      category: "designer",
+      tipo: "fulltime",
       compania: "",
       logo: null,
       email: "",
@@ -19,8 +22,21 @@ export default class PostJobForm extends React.Component {
       position: "",
       location: "",
       desc: "",
+      show: false,
+      confirmed: false
     };
   }
+
+  showModal = () => {
+    // console.log("showmodal")
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    console.log("hidemodal")
+    this.setState({ show: false });
+    this.postContent(this)
+  };
 
   postContent() {
     axios.post("http://localhost:3500/jobs", {
@@ -29,7 +45,7 @@ export default class PostJobForm extends React.Component {
       company: this.state.compania,
       type_of_job: this.state.tipo,
       category: this.state.category,
-      logo: null,
+      logo: this.state.logo,
       url: this.state.url,
       description: this.state.desc,
       email: this.state.email,
@@ -37,20 +53,66 @@ export default class PostJobForm extends React.Component {
   }
 
   handleChange = (event, fieldName) => {
-    this.setState({ [fieldName]: event.target.value });
+    if(fieldName==="logo"){
+      var nameString = event.target.value;
+    var filename = nameString.split("\\").pop();
+    this.setState({ [fieldName]: filename });
+    // console.log(this.state)
+
+    }else{
+      this.setState({ [fieldName]: event.target.value });
+      // console.log(this.state)
+
+    }
+    
   };
 
-  handleLogo = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      this.setState({
-        image: URL.createObjectURL(event.target.files[0]),
-      });
-    }
-  };
+
+  // handleLogo = (event) => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     this.setState({
+  //       image: URL.createObjectURL(event.target.files[0]),
+  //     },
+  //     console.log("imageuurl"),
+  //     console.log(event),
+  //     console.log(this.state)
+  //     );
+  //   }
+  // };
+
 
   render() {
+
+    const show = this.state.show;
+  
+    // const handleShow = () => this.showModal;
+    // const handleClose = () => this.hideModal;
+
+
+
+    const modal = (
+        <div>
+           
+  
+        <Modal show={show} onHide={this.hideModal} animation={true} size="lg">
+          <Modal.Header closeButton>
+            <Modal.Title>Preview</Modal.Title>
+          </Modal.Header>
+          <Modal.Body> <JobformPreviewModal data={this.state}/> </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={this.hideModal}>
+              Confirm
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        </div>
+    );
+
     return (
       <div class="container">
+        {modal}
+       
+
         <div class="row float-right mr-2">
           <Logout />
           <Settings />
@@ -79,7 +141,7 @@ export default class PostJobForm extends React.Component {
               <option selected disabled>
                 Choose a category
               </option>
-              <option value="designer">Designer</option>
+              <option value="designer" selected>Designer</option>
               <option value="developer">Developer</option>
               <option value="lead">Lead Developer</option>
               <option value="artist">Artistoption</option>
@@ -96,7 +158,7 @@ export default class PostJobForm extends React.Component {
               onChange={(event) => this.handleChange(event, "tipo")}
               required
             >
-              <option value="fulltime">Full Time</option>
+              <option value="fulltime" selected>Full Time</option>
               <option value="parttime">Part Time</option>
               <option value="freelancer">Freelancer</option>
             </select>
@@ -119,7 +181,10 @@ export default class PostJobForm extends React.Component {
               type="file"
               class="form-control"
               id="logo"
-              onChange={this.handleLogo}
+              //onChange={(event) => this.handleLogo(event)}
+              onChange={(event) => this.handleChange(event, "logo")}
+
+              
             />
           </div>
           <div class="form-group">
@@ -182,7 +247,7 @@ export default class PostJobForm extends React.Component {
             ></textarea>
           </div>
         </div>
-        <button onClick={this.postContent.bind(this)}>Submit</button>
+        <button onClick={this.showModal}>Submit</button>
       </div>
     );
   }

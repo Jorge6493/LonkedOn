@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-mongoose.connect("mongodb://localhost/lonkedon");
+mongoose.connect("mongodb://localhost/lonkedon",{ useNewUrlParser: true, useUnifiedTopology: true });
 
 var category_schema = new Schema({
 	category: { type: String, required: true }

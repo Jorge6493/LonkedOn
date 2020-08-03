@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-mongoose.connect("mongodb://localhost/lonkedon");
+mongoose.connect("mongodb://localhost/lonkedon",{ useNewUrlParser: true, useUnifiedTopology: true });
 
 var user_schema = new Schema({
 	username: { type: String, required: true, maxlength: [50, "Username muy grande"] },

@@ -22,6 +22,8 @@ function App() {
           {/* <Navigation /> */}
             <Switch>
              <Route path="/" component={Login} exact/>
+             <Route path="/home" component={Home} exact/>
+
              <Route path="/jobs/:jobId" component={Jobs} exact/>
              <Route path="/postjob" component={PostJobForm} exact/>
              <Route path="/jobdetail/:jobId" component={JobDetail} exact/>

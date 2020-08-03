@@ -6,6 +6,11 @@ import Postjob from "../postjob";
 import HomeButton from "../homebutton/homebutton";
 import axios from "axios";
 
+// import algo from "../../images"
+
+
+
+
 export default class JobDetail extends Component {
 
     state = {
@@ -23,6 +28,7 @@ export default class JobDetail extends Component {
      
     
     render() {
+        
         const dataAvail = this.state.dataAvail;
         // let info;
         if (dataAvail){
@@ -61,7 +67,7 @@ export default class JobDetail extends Component {
         <p>{this.state.data.url}</p>
     </div>
     <div class="col-sm-3">
-        <img alt='hola' src="https://images-na.ssl-images-amazon.com/images/I/710JXdscVsL._SY500_.jpg"></img>
+        <img alt='hola' src={"/images/"+this.state.data.logo}></img>
     </div>
                 </div>
             </div>            
