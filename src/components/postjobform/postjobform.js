@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import "./postjobform.css";
 import Logout from "../logout";
 import Settings from "../settings";
@@ -23,19 +23,37 @@ export default class PostJobForm extends React.Component {
       location: "",
       desc: "",
       show: false,
-      confirmed: false
-    };
-  }
+        confirmed: false,
+        categories: []
+      };
 
-  showModal = () => {
-    // console.log("showmodal")
-    this.setState({ show: true });
-  };
+      
+
+    }
+
+    componentDidMount() {
+        this.getCategories()
+    }
+
+    showModal = (e) => {
+        e.preventDefault();
+        this.setState({ show: true });
+    };
 
   hideModal = () => {
-    console.log("hidemodal")
-    this.setState({ show: false });
-    this.postContent(this)
+      this.postContent(this);
+      this.setState({
+          show: false, category: "designer",
+          tipo: "fulltime",
+          compania: "",
+          logo: null,
+          email: "",
+          url: "",
+          position: "",
+          location: "",
+          desc: ""
+      });
+      alert("Trabajo ha sido posteado!")
   };
 
   postContent() {
@@ -50,7 +68,25 @@ export default class PostJobForm extends React.Component {
       description: this.state.desc,
       email: this.state.email,
     });
-  }
+    };
+
+    getCategories() {
+        axios.get("http://localhost:3500/categories").then(resp => {
+            for (var k in resp.data) {
+                this.state.categories.push(resp.data[k]["category"]);
+            }
+            console.log(this.state.categories);
+            var select = document.getElementById("categoria");
+
+            for (var i = 0; i < this.state.categories.length; i++) {
+                var opt = this.state.categories[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+            }
+        });        
+    };
 
   handleChange = (event, fieldName) => {
     if(fieldName==="logo"){
@@ -59,52 +95,29 @@ export default class PostJobForm extends React.Component {
     this.setState({ [fieldName]: filename });
     // console.log(this.state)
 
-    }else{
-      this.setState({ [fieldName]: event.target.value });
-      // console.log(this.state)
-
     }
-    
+    else {
+      this.setState({ [fieldName]: event.target.value });
+    }  
   };
-
-
-  // handleLogo = (event) => {
-  //   if (event.target.files && event.target.files[0]) {
-  //     this.setState({
-  //       image: URL.createObjectURL(event.target.files[0]),
-  //     },
-  //     console.log("imageuurl"),
-  //     console.log(event),
-  //     console.log(this.state)
-  //     );
-  //   }
-  // };
-
 
   render() {
 
     const show = this.state.show;
-  
-    // const handleShow = () => this.showModal;
-    // const handleClose = () => this.hideModal;
-
-
 
     const modal = (
         <div>
-           
-  
-        <Modal show={show} onHide={this.hideModal} animation={true} size="lg">
-          <Modal.Header closeButton>
-            <Modal.Title>Preview</Modal.Title>
-          </Modal.Header>
-          <Modal.Body> <JobformPreviewModal data={this.state}/> </Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={this.hideModal}>
-              Confirm
-            </Button>
-          </Modal.Footer>
-        </Modal>
+            <Modal show={show} onHide={this.hideModal} animation={true} size="lg">
+              <Modal.Header closeButton>
+                <Modal.Title>Preview</Modal.Title>
+              </Modal.Header>
+              <Modal.Body> <JobformPreviewModal data={this.state}/> </Modal.Body>
+              <Modal.Footer>
+                <Button variant="primary" onClick={this.hideModal}>
+                  Confirm
+                </Button>
+              </Modal.Footer>
+            </Modal>
         </div>
     );
 
@@ -126,128 +139,121 @@ export default class PostJobForm extends React.Component {
           <div class="input-group col-sm-2 ml-auto">
             <Postjob />
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="categoria">Category</label>
-            <select
-              for="categoria"
-              class="form-control"
-              id="categoria"
-              value={this.state.category}
-              onChange={(event) => this.handleChange(event, "category")}
-              required
-            >
-              <option selected disabled>
-                Choose a category
-              </option>
-              <option value="designer" selected>Designer</option>
-              <option value="developer">Developer</option>
-              <option value="lead">Lead Developer</option>
-              <option value="artist">Artistoption</option>
-              <option value="director">Director</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="tipo">Type</label>
-            <select
-              for="categoria"
-              class="form-control"
-              id="tipo"
-              value={this.state.tipo}
-              onChange={(event) => this.handleChange(event, "tipo")}
-              required
-            >
-              <option value="fulltime" selected>Full Time</option>
-              <option value="parttime">Part Time</option>
-              <option value="freelancer">Freelancer</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="compania">Company</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter company name"
-              id="compania"
-              value={this.state.compania}
-              onChange={(event) => this.handleChange(event, "compania")}
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="logo">Logo</label>
-            <input
-              type="file"
-              class="form-control"
-              id="logo"
-              //onChange={(event) => this.handleLogo(event)}
-              onChange={(event) => this.handleChange(event, "logo")}
+            </div>
+            <form id="leform" class="col-md-6" onSubmit={this.showModal}>
+                  <div class="form-group">
+                    <label for="categoria">Category</label>
+                    <select
+                      for="categoria"
+                      class="form-control"
+                      id="categoria"
+                      value={this.state.category}
+                      onChange={(event) => this.handleChange(event, "category")}
+                      required
+                    >
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="tipo">Type</label>
+                    <select
+                      for="categoria"
+                      class="form-control"
+                      id="tipo"
+                      value={this.state.tipo}
+                      onChange={(event) => this.handleChange(event, "tipo")}
+                      required
+                    >
+                      <option value="fulltime" selected>Full Time</option>
+                      <option value="parttime">Part Time</option>
+                      <option value="freelancer">Freelancer</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="compania">Company</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter company name"
+                      id="compania"
+                      value={this.state.compania}
+                      onChange={(event) => this.handleChange(event, "compania")}
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="logo">Logo</label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="logo"
+                      //onChange={(event) => this.handleLogo(event)}
+                      onChange={(event) => this.handleChange(event, "logo")}
 
               
-            />
-          </div>
-          <div class="form-group">
-            <label for="email">Contact Email</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter contact email address"
-              id="email"
-              value={this.state.email}
-              onChange={(event) => this.handleChange(event, "email")}
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="url">URL</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter company webpage"
-              id="url"
-              value={this.state.url}
-              onChange={(event) => this.handleChange(event, "url")}
-            />
-          </div>
-          <div class="form-group">
-            <label for="position">Position</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter available position"
-              id="position"
-              value={this.state.position}
-              onChange={(event) => this.handleChange(event, "position")}
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="location">Location</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter company location"
-              id="location"
-              value={this.state.location}
-              onChange={(event) => this.handleChange(event, "location")}
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="desc">Description</label>
-            <textarea
-              id="desc"
-              class="form-control"
-              placeholder="Enter job description"
-              rows="4"
-              value={this.state.desc}
-              onChange={(event) => this.handleChange(event, "desc")}
-              required
-            ></textarea>
-          </div>
-        </div>
-        <button onClick={this.showModal}>Submit</button>
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Contact Email</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter contact email address"
+                      id="email"
+                      value={this.state.email}
+                      onChange={(event) => this.handleChange(event, "email")}
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="url">URL</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter company webpage"
+                      id="url"
+                      value={this.state.url}
+                      onChange={(event) => this.handleChange(event, "url")}
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="position">Position</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter available position"
+                      id="position"
+                      value={this.state.position}
+                      onChange={(event) => this.handleChange(event, "position")}
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="location">Location</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter company location"
+                      id="location"
+                      value={this.state.location}
+                      onChange={(event) => this.handleChange(event, "location")}
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="desc">Description</label>
+                    <textarea
+                      id="desc"
+                      class="form-control"
+                      placeholder="Enter job description"
+                      rows="4"
+                      value={this.state.desc}
+                      onChange={(event) => this.handleChange(event, "desc")}
+                      required
+                    ></textarea>
+                  </div>
+
+                <button type="submit"> Submit </button>
+          </form>
       </div>
     );
   }
