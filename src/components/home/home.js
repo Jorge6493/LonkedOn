@@ -17,7 +17,7 @@ class Home extends Component {
 
             settings = <Settings />
         }
-        if(this.props.user.type_of_user == "Poster"){
+        if(this.props.user.type_of_user == "poster"){
             poster = <Postjob />
 
         } 
