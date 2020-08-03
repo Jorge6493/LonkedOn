@@ -5,9 +5,85 @@ import HomeButton from '../homebutton/homebutton';
 import Postjob from '../postjob';
 import AddCategory from '../addcat/addcat';
 import Table from '../table';
+import axios from 'axios';
+import MaterialTable, { MTableToolbar } from 'material-table';
+import PageviewIcon from '@material-ui/icons/Pageview';
+import { Link } from 'react-router-dom';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import EditIcon from '@material-ui/icons/Edit';
 
 export default class EditCategory extends React.Component {
+
+    state = {
+        loading: true,
+        data: {},
+        dataAvail: null
+      }
+
+    componentDidMount(){
+        axios.get('http://localhost:3500/categories')
+        .then(response => this.setState({ data: response.data, dataAvail: true }));
+        
+
+    }
+        
+      
+
     render() {
+        console.log(this.state)
+
+        const dataAvail = this.state.dataAvail;
+        let table;
+        if (dataAvail) {
+          table = <MaterialTable
+            options={{ pageSize: 20, search: true ,actionsColumnIndex: -1}}
+            columns={[
+              { title: 'Category', field: 'category' }
+            ]}
+    
+            data={this.state.data}
+            actions={[
+              {
+                icon: EditIcon,
+                tooltip: 'Edit',
+                onClick: (event, rowData) => {
+                  let id = rowData._id
+                  console.log(id)
+                  
+                  axios.delete('http://localhost:3500/categories/'+id).then(response => console.log('deleted category'))
+                }
+              },
+              {
+                icon: RemoveCircleIcon,
+                tooltip: 'Delete',
+                onClick: (event, rowData) => {
+                  let id = rowData._id
+                  console.log(id)
+                  
+                  axios.delete('http://localhost:3500/categories/'+id).then(response => console.log('deleted category'))
+                }
+              }
+            ]}
+    
+            title='All Categories'
+            components={{
+              Toolbar: props => (<div>
+                <MTableToolbar {...props} />
+                <div style={{ padding: '0px 10px' }}>
+                  <h5>
+                    {/* {console.log(this.props.jobId)} */}
+                    {/* <Link to={'/jobs/' + this.props.jobId}>{jobs[this.props.jobId - 1].title}'s Table</Link> */}
+                  </h5>
+                </div>
+              </div>
+    
+              )
+            }}
+    
+          />;
+        }
+
+
         return (
             <div class="container">
                 <div class="row float-right mr-2">
@@ -26,13 +102,13 @@ export default class EditCategory extends React.Component {
                 </div>
                 <br />
                 <div class="row">
-                    <h3>All Categories</h3>
+                    {/* <h3>All Categories</h3> */}
                     <div class="input-group col-sm-2 ml-auto mr-4">
                         <AddCategory />
                     </div>
                 </div>
                 <div class="container">
-                    <Table jobId="5" size="10" />
+                    {table}
                 </div>
             </div>
         )

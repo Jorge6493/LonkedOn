@@ -59,10 +59,7 @@ export default class Login extends React.Component {
                 <div class="container">
                     <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
                     <hr />
-                    <div class="row">
-                        <h3 class="ml-3">Login</h3>
-                    </div>
-                    <div class="col-md-6 center">
+                    <div class="center">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" placeholder="Enter username" id="username" value={this.state.username} onChange={event => this.handleChange(event, "username")} />

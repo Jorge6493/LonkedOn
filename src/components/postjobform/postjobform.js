@@ -51,7 +51,7 @@ export default class PostJobForm extends React.Component {
           location: "",
           desc: ""
       });
-      alert("Trabajo ha sido posteado!")
+      alert("Tu posición ha sido posteada!")
   };
 
   postContent() {
@@ -97,7 +97,9 @@ export default class PostJobForm extends React.Component {
     else {
       this.setState({ [fieldName]: event.target.value });
     }  
-  };
+    };
+
+    handleClose = () => this.setState({ show: false });
 
   render() {
 
@@ -105,7 +107,7 @@ export default class PostJobForm extends React.Component {
 
     const modal = (
         <div>
-            <Modal show={show} onHide={this.hideModal} animation={true} size="lg">
+            <Modal show={show} onHide={this.handleClose} animation={true} size="lg">
               <Modal.Header closeButton>
                 <Modal.Title>Preview</Modal.Title>
               </Modal.Header>
@@ -129,13 +131,11 @@ export default class PostJobForm extends React.Component {
                 </div>
                 <h1 class="ml-5 pt-4 title"> Bolsa de Empleos "Tigre de Web"</h1>
                 <hr />
-                <div class="button row clearfix">
+                <div class="button row">
                     <div class="col-sm-6">
                         <HomeButton />
                     </div>
-                    <div class="col-sm-2 ml-auto">
-                        <Postjob />
-                    </div>
+                    <Postjob />
                 </div>
                 <div class="col-lg-9 form-prepare">
                     <form id="leform" class="col-md-6" onSubmit={this.showModal}>
@@ -250,7 +250,7 @@ export default class PostJobForm extends React.Component {
                             ></textarea>
                         </div>
 
-                        <button type="submit"> Submit </button>
+                        <button type="submit" class="btn btn-secondary"> Submit </button>
                     </form>
                 </div>
                 
