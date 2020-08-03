@@ -10,10 +10,16 @@ export default class AddCatView extends React.Component {
         this.setState({ [fieldName]: event.target.value });
     }
 
-    postCategory() {
+    postCategory = (e) => {
+        e.preventDefault();
         axios.post("http://localhost:3500/categories", {
             category: this.state.category
-        });
+        }).then(() => {
+            alert("Categoria posteada con exito!");
+            this.setState({ "category": "" });
+        }
+
+        );
     };
 
     render() {
@@ -33,7 +39,7 @@ export default class AddCatView extends React.Component {
                         onChange={(event) => this.handleChange(event, "category")}
                         required
                     />
-                    <button type="submit" class="btn btn-secondary" onClick={this.postCategory()}> Add Category </button>
+                    <button type="submit" class="btn btn-secondary" onClick={this.postCategory}> Add Category </button>
 
                 </div>
             </div>
