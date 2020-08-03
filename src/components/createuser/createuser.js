@@ -26,7 +26,8 @@ export default class CreateUser extends React.Component {
             username: "",
             password: "",
             type_of_user: ""
-        }))
+        }));
+        this.props.history.push('/');
     }
     
     handleChange = (event, fieldName) => {
@@ -68,7 +69,7 @@ export default class CreateUser extends React.Component {
                     </select>
                 </div>
                 </div>
-                <button onClick={this.postContent.bind(this)}>Submit</button>
+                <button class="btn btn-primary" onClick={this.postContent.bind(this)}>Submit</button>
             </div>    
         );
     }
