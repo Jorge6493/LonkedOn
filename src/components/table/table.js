@@ -9,16 +9,20 @@ import axios from 'axios';
 
 const jobs = [
   {
-    title: `Design`,
+    title: 'Designer',
+    value: 'designer'
   },
   {
-    title: `Programming`,
+    title: 'Developer',
+    value: 'developer'
   },
   {
-    title: `QA Engineer`,
+    title: 'QA Engineer',
+    value: 'qaengineer'
   },
   {
-    title: `Search`,
+    title: 'Search',
+    value: 'search'
   },
   
 ];
@@ -55,7 +59,8 @@ class Table extends Component {
     }
     else{
       console.log("!4")
-      axios.get('http://localhost:3500/jobs')
+      console.log(jobs[this.props.jobId - 1].title)
+      axios.get('http://localhost:3500/jobs/category/'+jobs[this.props.jobId - 1].value)
       .then(response => this.setState({ data: response.data, dataAvail: true }));
     }
 
@@ -94,7 +99,7 @@ class Table extends Component {
             <MTableToolbar {...props} />
             <div style={{ padding: '0px 10px' }}>
               <h5>
-                {console.log(this.props.jobId)}
+                {/* {console.log(this.props.jobId)} */}
                 <Link to={'/jobs/' + this.props.jobId}>{jobs[this.props.jobId - 1].title}'s Table</Link>
               </h5>
             </div>
