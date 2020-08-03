@@ -13,6 +13,7 @@ import SettingsView from './components/settingsview/settingsview';
 import CreateUser from './components/createuser/createuser';
 import Login from './components/login/login';
 import Search from './components/search/search';
+import EditCategory from './components/editcat/editcat';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
              <Route path="/settings" component={SettingsView} exact/>
              <Route path="/login" component={Login} exact/>
              <Route path="/search" component={Search} exact/>
+             <Route path="/editcat" component={EditCategory} exact/>
             <Route component={Error}/>
            </Switch>
         </div> 
