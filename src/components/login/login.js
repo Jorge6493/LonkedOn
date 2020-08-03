@@ -51,8 +51,7 @@ export default class Login extends React.Component {
                             username: response.data.username,
                             password: response.data.password,
                             type_of_user: response.data.type_of_user })
-                            console.log('state')
-                            console.log(this.state)
+                       
                             this.props.changeUserData(this.state);
                             
                             this.setState({
@@ -66,9 +65,7 @@ export default class Login extends React.Component {
                         }
                     )
                 
-                // console.log('state login')
-                // console.log(this.state)
-                // console.log('props')
+             
                
             }
         })
