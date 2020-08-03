@@ -37,40 +37,41 @@ export default class JobDetail extends Component {
         }
         return (
             <div class="container">
-                <div class="row float-right mr-2">
-                    <Logout/>
-                    <Settings/>
+                
+                <div class="row float-right mr-2 buttons">
+                    <Logout />
+                    <Settings />
                 </div>
-                <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
-                <br/>
-                <div class="row">
-                    <div class="input-group col-sm-6">
+                <h1 class="ml-5 pt-4 title"> Bolsa de Empleos "Tigre de Web"</h1>
+                <hr />
+                <div class="button row">
+                    <div class="col-sm-6">
                         <HomeButton />
-                    </div> 
-                    <div class="input-group col-sm-2 ml-auto">
-                        <Postjob/>
+                    </div>
+                    <Postjob />
+                </div>
+                <div class="card">
+                    <div class="col-lg-12">
+                        <div class="info">
+                            <h2><i><b>{this.state.data.position}</b></i></h2>
+                            <hr />
+                            <h3>{this.state.data.company}</h3>
+                            <i><h5>{this.state.data.location}</h5></i>
+                            <br/>
+                            <p>{this.state.data.description}</p>
+                            <br />
+                            <h5>C&oacute;mo Aplicar</h5>
+                            <h6>Env&iacute;a tu CV: <b>{this.state.data.email}</b></h6>
+                            <br/>
+                                <a href={this.state.data.url}>{this.state.data.url}</a>
+                        </div>
                     </div>
                 </div>
-                <br/>
-                <div class="row">
-                <div class="col-sm-9">
-        <h3>{this.state.data.company}</h3>
-        <h5>{this.state.data.location}</h5>
-        <hr/>
-        <h5>{this.state.data.position}</h5>
-        <hr/>
-        <p>{this.state.data.description}</p>
-        <br/>
-        <h5>How to apply</h5>
-        <br/>
-        <p>Send your resume at {this.state.data.email}</p>
-        <p>{this.state.data.url}</p>
-    </div>
-    <div class="col-sm-3">
-        <img alt='hola' src={"/images/"+this.state.data.logo}></img>
-    </div>
+
+                <div class="col-sm-3">
+                    <img alt='hola' src={"/images/"+this.state.data.logo}></img>
                 </div>
-            </div>            
+        </div>
         );
     }
 }
