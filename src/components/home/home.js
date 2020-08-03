@@ -13,12 +13,16 @@ class Home extends Component {
         let poster
         console.log('props home')
         console.log(this.props)
-        if(this.props.user.type_of_user == "admin"){
+        if(this.props.user.type_of_user == "admin" ){
             settings = <Settings />
         }
-        if(this.props.user.type_of_user == "poster" || this.props.user.type_of_user == "admin"){
+        if(this.props.user.type_of_user == "poster" || this.props.user.type_of_user == "admin" ){
             poster = <Postjob />
         } 
+        if(this.props.user.type_of_user == "user"){
+            settings = null;
+            poster = null;
+        }
         return (
             <div class="container">
                 <div class="row float-right mr-2 buttons"> 

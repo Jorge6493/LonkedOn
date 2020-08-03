@@ -61,7 +61,9 @@ export default class PostJobForm extends React.Component {
                 location: "",
                 desc: ""
             });
-        }     
+        }    
+        alert("Tu posición ha sido Posteada!");
+
   };
 
   postContent() {
@@ -93,8 +95,7 @@ export default class PostJobForm extends React.Component {
             email: this.state.email
         }).then(resp => {
             this.componentDidMount();
-            alert("Tu posición ha sido actualizada!");
-        });        ;
+        });
     };
 
     getCategories() {
@@ -175,7 +176,7 @@ export default class PostJobForm extends React.Component {
             <div class="col-lg-12 mainthing">
                 <div class="row float-right mr-2 buttons">
                     <Logout />
-                    <Settings />
+                    
                 </div>
                 <h1 class="ml-5 pt-4 title"> Bolsa de Empleos "Tigre de Web"</h1>
                 <hr />
@@ -183,7 +184,7 @@ export default class PostJobForm extends React.Component {
                     <div class="col-sm-6">
                         <HomeButton />
                     </div>
-                    <Postjob />
+                    
                 </div>
                 <div class="col-lg-9 form-prepare">
                     <form id="leform" class="col-md-6" onSubmit={this.showModal}>

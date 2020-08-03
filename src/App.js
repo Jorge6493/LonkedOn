@@ -22,7 +22,7 @@ class App extends Component {
   state = {
     username: "",
     password: "",
-    type_of_user: "Admin"
+    type_of_user: "admin"
   }
 
   changeUserData = (data) => {
