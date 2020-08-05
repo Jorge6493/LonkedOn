@@ -46,7 +46,7 @@ class JobformPreviewModal extends Component {
     <hr/>
     <h5>{this.props.data.position}</h5>
     <hr/>
-    <p>{this.props.data.description}</p>
+    <p>{this.props.data.desc}</p>
     <br/>
     <h5>How to apply</h5>
     <br/>
