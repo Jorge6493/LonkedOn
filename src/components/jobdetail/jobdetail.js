@@ -69,7 +69,7 @@ export default class JobDetail extends Component {
                 </div>
 
                 <div class="col-sm-3">
-                    <img alt='hola' src={"/images/"+this.state.data.logo}></img>
+                    <img alt='' src={"/images/"+this.state.data.logo}></img>
                 </div>
         </div>
         );

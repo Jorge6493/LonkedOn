@@ -62,7 +62,7 @@ export default class PostJobForm extends React.Component {
                 desc: ""
             });
         }    
-        alert("Tu posición ha sido Posteada!");
+        // alert("Tu posición ha sido Posteada!");
 
   };
 
