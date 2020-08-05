@@ -54,7 +54,7 @@ class JobformPreviewModal extends Component {
     <p>{this.props.data.url}</p>
 </div>
 <div class="col">
-    <img alt='hola' src={"/images/"+this.props.data.logo}></img>
+    <img alt='' src={"/images/"+this.props.data.logo}></img>
 </div>
             </div>
         </div>            

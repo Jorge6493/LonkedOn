@@ -134,7 +134,7 @@ class Table extends Component {
                   { title: 'Position', field: 'position' },
                   { title: 'Category', field: 'category' },
                   {
-                    title: 'Data',  field: 'data',
+                    title: 'View',  field: 'view',
                     render: rowData => <Link to={"/jobdetail/"+rowData._id}><button type="button" id="createuserbtn-btn" class="btn"><i class="fas fa-info-circle"></i></button></Link>
                   }
               ]}

@@ -87,10 +87,11 @@ export default class EditCategory extends React.Component {
                 <br />
                 <div class="row">
                     {/* <h3>All Categories</h3> */}
-                    <div class="input-group col-sm-2 ml-auto mr-4">
+                    <div class="input-group col-sm-2 ml-auto float-right">
                         <AddCategory />
                     </div>
                 </div>
+                    <br></br>
                 <div class="container">
                     {table}
                 </div>
