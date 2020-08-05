@@ -1,25 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 
 import Postjob from '../postjob'
 import Settings from '../settings'
 import Logout from '../logout'
 import Table from '../table'
+import {TypeuserContext} from '../typeuser-context/typeuser-context'
+
+
 
 import './home.css';
 
-class Home extends Component {
-    render() {
+export const Home = props => {
+    const [typeuserstate,setTypeuserstate] = useContext(TypeuserContext);
         let settings
         let poster
+        
+        // let typeofuser = this.context
+        console.log('context')
+        console.log(typeuserstate.type_of_user)
         console.log('props home')
-        console.log(this.props)
-        if(this.props.user.type_of_user == "admin" ){
+        if (props.user.type_of_user&&typeuserstate.type_of_user==""){
+
+            setTypeuserstate({type_of_user: props.user.type_of_user})
+        }
+        // console.log(props.user.type_of_user)
+        // console.log(typeofuser)
+        // typeofuser.setTypeofuser('user')
+        
+        // console.log(props)
+        if(typeuserstate.type_of_user == "admin" ){//
             settings = <Settings />
         }
-        if(this.props.user.type_of_user == "poster" || this.props.user.type_of_user == "admin" ){
+        if(typeuserstate.type_of_user == "poster" || typeuserstate.type_of_user == "admin" ){//
             poster = <Postjob />
         } 
-        if(this.props.user.type_of_user == "user"){
+        if(typeuserstate.type_of_user == "user"){
             settings = null;
             poster = null;
         }
@@ -27,6 +42,7 @@ class Home extends Component {
             <div class="container">
                 <div class="row float-right mr-2 buttons"> 
                     <Logout />
+                   
                     {settings}
                 </div>
                 <h1 class="ml-5 pt-4 title"> Bolsa de Empleos "Tigre de Web"</h1>
@@ -42,6 +58,3 @@ class Home extends Component {
 
         );
     }
-}
-
-export default Home;

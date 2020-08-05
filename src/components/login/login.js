@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useState,useContext } from "react";
 import './login.css';
 import axios from "axios";
-import Home from "../home";
+import {Home} from "../home";
 import { Link } from "react-router-dom";
+import { TypeuserContext } from "../typeuser-context/typeuser-context";
+// import { TypeuserContextConsumer, TypeuserContextProvider } from "../typeuser-provider/typeuser-provider";
+
+// const [typeuserstate,setTypeuserstate] = useContext(TypeuserContext);
 
 export default class Login extends React.Component {
+    
 
     constructor(props) {
         super(props)
@@ -23,6 +28,7 @@ export default class Login extends React.Component {
     }
 
     postContent() {
+        
         axios.post("http://localhost:3500/users/login", {
             username: this.state.username,
             password: this.state.password
@@ -51,8 +57,20 @@ export default class Login extends React.Component {
                             username: response.data.username,
                             password: response.data.password,
                             type_of_user: response.data.type_of_user })
-                       
                             this.props.changeUserData(this.state);
+                            // setTypeuserstate({type_of_user: response.data.type_of_user })
+
+
+
+                            // console.log(this.context)
+                            // this.context.setTypeofuser();
+                            
+                            // this.context.setTypeofuser(response.data.type_of_user)
+                            // TypeuserContextProvider.setUserType(response.data.type_of_user)
+                            // this.context.setUserType;
+                            // this.context.se
+                            
+                            
                             
                             this.setState({
                                 username: "",
@@ -76,6 +94,7 @@ export default class Login extends React.Component {
     };
 
     render() {
+        
         if (!this.state.valid){
             return (
                 <div class="container">

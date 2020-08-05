@@ -10,6 +10,8 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import EditIcon from '@material-ui/icons/Edit';
 
+
+
 const jobs = [
   {
     title: 'Designer',
@@ -55,6 +57,7 @@ class Table extends Component {
     }
 
   render() {
+   
 
     const dataAvail = this.state.dataAvail;
     let table;
@@ -64,30 +67,43 @@ class Table extends Component {
         columns={[
           { title: 'Location', field: 'location' },
           { title: 'Position', field: 'position' },
-          { title: 'Category', field: 'category' }
+          { title: 'Category', field: 'category' },
+          {
+            title: 'View',  field: 'view',
+            render: rowData => <Link to={"/jobdetail/"+rowData._id}><button type="button" id="view-btn" class="btn"><i class="fas fa-info-circle"></i></button></Link>
+          },
+          {
+            title: 'Edit',  field: 'edit',
+            render: rowData => <Link to={"/postjob/"+rowData._id}><button type="button" id="editjob-btn" class="btn"><i class="fas fa-edit"></i></button></Link>
+          },
+          
+          
         ]}
 
         data={this.state.data}
         actions={[
-          {
-            icon: PageviewIcon,
-            tooltip: 'View Job',
-            onClick: (event, rowData) => {
-              let id = rowData._id
-              window.location = "/jobdetail/"+id}
-          },
-          {
-            icon: EditIcon,
-            tooltip: 'Edit Job',
-            onClick: (event, rowData) => {
-              let id = rowData._id
-              window.location = "/postjob/"+id}
-          },
+          // {
+          //   icon: PageviewIcon,
+          //   tooltip: 'View Job',
+          //   onClick: (event, rowData) => {
+          //     let id = rowData._id
+              
+          //     Link("/jobdetail/"+id) }
+          // },
+          // {
+          //   icon: EditIcon,
+          //   tooltip: 'Edit Job',
+          //   onClick: (event, rowData) => {
+          //     let id = rowData._id
+              
+          //     window.location = "/postjob/"+id}
+          // },
             {
                 icon: RemoveCircleIcon,
                 tooltip: 'Remove Job',
                 onClick: (event, rowData) => {
                     let id = rowData._id
+                    
                     axios.delete("http://localhost:3500/jobs/" + id, { params: { _id: id } }).then(
                         response => this.componentDidMount()
                     )
@@ -116,20 +132,25 @@ class Table extends Component {
               columns={[
                   { title: 'Location', field: 'location' },
                   { title: 'Position', field: 'position' },
-                  { title: 'Category', field: 'category' }
+                  { title: 'Category', field: 'category' },
+                  {
+                    title: 'Data',  field: 'data',
+                    render: rowData => <Link to={"/jobdetail/"+rowData._id}><button type="button" id="createuserbtn-btn" class="btn"><i class="fas fa-info-circle"></i></button></Link>
+                  }
               ]}
 
               data={this.state.data}
-              actions={[
-                  {
-                      icon: PageviewIcon,
-                      tooltip: 'View Job',
-                      onClick: (event, rowData) => {
-                          let id = rowData._id
-                          window.location = "/jobdetail/" + id
-                      }
-                  }
-              ]}
+              // actions={[
+              //     {
+              //         icon: PageviewIcon,
+              //         tooltip: 'View Job',
+              //         onClick: (event, rowData) => {
+              //             let id = rowData._id
+                          
+              //             Link("/jobdetail/"+id)
+              //         }
+              //     }
+              // ]}
 
               title=''
               components={{

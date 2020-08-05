@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // import logo from './logo.svg';
 import './App.css';
-import Home from './components/home'
+import {Home} from './components/home'
 import Jobs from './components/jobs/jobs';
 // import PostjobPage from './components/postjob-page/postjob-page';
 
@@ -17,12 +17,16 @@ import EditCategory from './components/editcat/editcat';
 import EditJobs from './components/editjobs/editjobs';
 import AddCatView from './components/addcatview/addcatview';
 
+import {TypeuserProvider} from './components/typeuser-context/typeuser-context'
+
+// const Context_type_of_user = React.createContext("user");
+
 
 class App extends Component {
   state = {
     username: "",
     password: "",
-    type_of_user: "admin"
+    type_of_user: ""
   }
 
   changeUserData = (data) => {
@@ -37,38 +41,44 @@ class App extends Component {
   render() {
     return (
       <div>
+        
         <BrowserRouter>
+        <TypeuserProvider>
+           {/* <Navigation /> */}
+           <Switch>
+             <Route 
+              path="/"  
+              render={(props) => (
+                <Login {...props} changeUserData={this.changeUserData} />
+              )}
+              exact/>
+             <Route 
+              path="/home" 
+              render={(props) => (
+                <Home {...props} user={this.state} />
+              )}
+              exact/>
+
+              <Route path="/jobs/:jobId" component={Jobs} exact/>
+              <Route path="/postjob" component={PostJobForm} exact />
+              <Route path="/postjob/:jobId" component={PostJobForm} exact />
+              <Route path="/jobdetail/:jobId" component={JobDetail} exact/>
+              <Route path="/createuser" component={CreateUser} exact/>
+              <Route path="/settings" component={SettingsView} exact/>
+              <Route path="/login" component={Login} exact/>
+              <Route path="/search" component={Search} exact/>
+              <Route path="/editcat" component={EditCategory} exact/>
+              <Route path="/editjobs" component={EditJobs} exact/>
+              <Route path="/addcatview" component={AddCatView} exact/>
+              <Route component={Error}/>
+           </Switch>
+
+        </TypeuserProvider>
           
-            {/* <Navigation /> */}
-              <Switch>
-               <Route 
-                path="/"  
-                render={(props) => (
-                  <Login {...props} changeUserData={this.changeUserData} />
-                )}
-                exact/>
-               <Route 
-                path="/home" 
-                render={(props) => (
-                  <Home {...props} user={this.state} />
-                )}
-                exact/>
-  
-                <Route path="/jobs/:jobId" component={Jobs} exact/>
-                <Route path="/postjob" component={PostJobForm} exact />
-                <Route path="/postjob/:jobId" component={PostJobForm} exact />
-                <Route path="/jobdetail/:jobId" component={JobDetail} exact/>
-                <Route path="/createuser" component={CreateUser} exact/>
-                <Route path="/settings" component={SettingsView} exact/>
-                <Route path="/login" component={Login} exact/>
-                <Route path="/search" component={Search} exact/>
-                <Route path="/editcat" component={EditCategory} exact/>
-                <Route path="/editjobs" component={EditJobs} exact/>
-                <Route path="/addcatview" component={AddCatView} exact/>
-                <Route component={Error}/>
-             </Switch>
-          
-        </BrowserRouter>
+         
+        
+      </BrowserRouter>
+        
       </div>
     );
   }
