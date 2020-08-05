@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 export default class AddCatView extends React.Component {
     state = {
@@ -27,6 +28,11 @@ export default class AddCatView extends React.Component {
             <div class="container">
                 <h1 class="ml-5 pt-4">Bolsa de Empleos "Tigre de Web"</h1>
                 <hr />
+                <div id="BackButton3">
+                    <Link to="/editcat">
+                        <button type="button" id="back3btn-btn" class="btn btn-primary float-right">Back</button>
+                    </Link>
+                </div>
                 <br />
                 <div class="form-group center">
                     <label for="categoryName">Category Name</label>

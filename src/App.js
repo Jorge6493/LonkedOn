@@ -18,6 +18,8 @@ import EditJobs from './components/editjobs/editjobs';
 import AddCatView from './components/addcatview/addcatview';
 
 import {TypeuserProvider} from './components/typeuser-context/typeuser-context'
+import EditJobForm from './components/editjobform/editjobform';
+import JobDetailEdit from './components/jobdetailedit/jobdetailedit';
 
 // const Context_type_of_user = React.createContext("user");
 
@@ -62,7 +64,9 @@ class App extends Component {
               <Route path="/jobs/:jobId" component={Jobs} exact/>
               <Route path="/postjob" component={PostJobForm} exact />
               <Route path="/postjob/:jobId" component={PostJobForm} exact />
+              <Route path="/editjob/:jobId" component={EditJobForm} exact />
               <Route path="/jobdetail/:jobId" component={JobDetail} exact/>
+              <Route path="/jobdetailedit/:jobId" component={JobDetailEdit} exact/>
               <Route path="/createuser" component={CreateUser} exact/>
               <Route path="/settings" component={SettingsView} exact/>
               <Route path="/login" component={Login} exact/>

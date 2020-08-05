@@ -70,11 +70,11 @@ class Table extends Component {
           { title: 'Category', field: 'category' },
           {
             title: 'View',  field: 'view',
-            render: rowData => <Link to={"/jobdetail/"+rowData._id}><button type="button" id="view-btn" class="btn"><i class="fas fa-info-circle"></i></button></Link>
+            render: rowData => <Link to={"/jobdetailedit/"+rowData._id}><button type="button" id="view-btn" class="btn"><i class="fas fa-info-circle"></i></button></Link>
           },
           {
             title: 'Edit',  field: 'edit',
-            render: rowData => <Link to={"/postjob/"+rowData._id}><button type="button" id="editjob-btn" class="btn"><i class="fas fa-edit"></i></button></Link>
+            render: rowData => <Link to={"/editjob/"+rowData._id}><button type="button" id="editjob-btn" class="btn"><i class="fas fa-edit"></i></button></Link>
           },
           
           
