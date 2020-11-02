@@ -1,3 +1,21 @@
+Job Board (Bolsa de Empleos) Project
+
+Webapp que busca mostrar empleos disponibles para el usuario, y la posiblidad de editar las categorías de empleos que pueden ser mostradas en estas vistas. Incluye Login.
+
+## Stack
+
+React frontend con backend de Node.js y Firebase
+
+
+## To run:
+
+### `npm i`
+
+then
+
+### `npm start`
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
